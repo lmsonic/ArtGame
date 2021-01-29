@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-paintWidth = 3.0
+paintWidth = 5.0
 
 [node name="GestureRecognizer" type="Node" parent="."]
 script = ExtResource( 2 )
