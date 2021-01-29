@@ -1,16 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://gui_panel_3d.tscn" type="PackedScene" id=1]
-[ext_resource path="res://kinematic character/follow_camera.gd" type="Script" id=2]
-[ext_resource path="res://kinematic character/cubio.gd" type="Script" id=3]
-[ext_resource path="res://kinematic character/white_wood.png" type="Texture" id=4]
+[ext_resource path="res://kinematic character/cubio.gd" type="Script" id=1]
+[ext_resource path="res://kinematic character/white_wood.png" type="Texture" id=2]
+[ext_resource path="res://kinematic character/follow_camera.gd" type="Script" id=3]
 
-[sub_resource type="SpatialMaterial" id=5]
-albedo_texture = ExtResource( 4 )
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 2 )
 metallic = 0.46
 roughness = 0.0
 
-[sub_resource type="ArrayMesh" id=6]
+[sub_resource type="ArrayMesh" id=2]
 surfaces/0 = {
 "aabb": AABB( -1, -1, -1, 2, 2, 2 ),
 "array_data": PoolByteArray( 147, 59, 147, 59, 255, 187, 0, 60, 43, 43, 145, 0, 201, 59, 194, 38, 147, 59, 147, 187, 255, 187, 0, 60, 43, 213, 145, 0, 201, 59, 201, 59, 147, 187, 147, 187, 0, 188, 0, 60, 213, 213, 145, 0, 194, 38, 201, 59, 147, 187, 147, 59, 0, 188, 0, 60, 213, 43, 145, 0, 194, 38, 194, 38, 147, 59, 147, 187, 0, 60, 0, 60, 43, 213, 111, 0, 201, 59, 201, 59, 147, 59, 147, 59, 0, 60, 0, 60, 43, 43, 111, 0, 201, 59, 194, 38, 147, 187, 147, 59, 255, 59, 0, 60, 213, 43, 111, 0, 194, 38, 194, 38, 147, 187, 147, 187, 255, 59, 0, 60, 213, 213, 111, 0, 194, 38, 201, 59, 0, 188, 147, 187, 147, 59, 0, 60, 145, 213, 43, 0, 194, 38, 201, 59, 0, 188, 147, 59, 147, 59, 0, 60, 145, 43, 43, 0, 194, 38, 194, 38, 255, 187, 147, 59, 147, 187, 0, 60, 145, 43, 213, 0, 201, 59, 194, 38, 255, 187, 147, 187, 147, 187, 0, 60, 145, 213, 213, 0, 201, 59, 201, 59, 147, 59, 0, 60, 147, 187, 0, 60, 43, 111, 213, 0, 201, 59, 194, 38, 147, 187, 0, 60, 147, 187, 0, 60, 213, 111, 213, 0, 194, 38, 194, 38, 147, 187, 0, 60, 147, 59, 0, 60, 213, 111, 43, 0, 194, 38, 201, 59, 147, 59, 0, 60, 147, 59, 0, 60, 43, 111, 43, 0, 201, 59, 201, 59, 0, 60, 147, 187, 147, 187, 0, 60, 111, 213, 213, 0, 201, 59, 201, 59, 0, 60, 147, 59, 147, 187, 0, 60, 111, 43, 213, 0, 201, 59, 194, 38, 255, 59, 147, 59, 147, 59, 0, 60, 111, 43, 43, 0, 194, 38, 194, 38, 0, 60, 147, 187, 147, 59, 0, 60, 111, 213, 43, 0, 194, 38, 201, 59, 147, 59, 147, 187, 255, 187, 0, 60, 43, 213, 145, 0, 201, 59, 0, 60, 0, 60, 147, 187, 147, 187, 0, 60, 111, 213, 213, 0, 0, 60, 27, 60, 147, 59, 0, 188, 147, 187, 0, 60, 43, 145, 213, 0, 201, 59, 27, 60, 147, 59, 0, 188, 147, 59, 0, 60, 43, 145, 43, 0, 201, 59, 201, 59, 0, 60, 147, 187, 147, 59, 0, 60, 111, 213, 43, 0, 0, 60, 201, 59, 147, 59, 147, 187, 0, 60, 0, 60, 43, 213, 111, 0, 201, 59, 0, 60, 147, 187, 0, 188, 147, 59, 0, 60, 213, 145, 43, 0, 194, 38, 201, 59, 147, 187, 147, 187, 255, 59, 0, 60, 213, 213, 111, 0, 194, 38, 255, 59, 0, 188, 147, 187, 147, 59, 0, 60, 145, 213, 43, 0, 0, 0, 201, 59, 255, 187, 147, 187, 147, 187, 0, 60, 145, 213, 213, 0, 0, 0, 194, 38, 147, 187, 147, 187, 0, 188, 0, 60, 213, 213, 145, 0, 194, 38, 0, 0, 147, 187, 0, 188, 147, 187, 0, 60, 213, 145, 213, 0, 194, 38, 194, 38, 0, 60, 147, 59, 147, 187, 0, 60, 111, 43, 213, 0, 0, 0, 194, 38, 147, 59, 147, 59, 255, 187, 0, 60, 43, 43, 145, 0, 194, 166, 0, 0, 147, 59, 0, 60, 147, 187, 0, 60, 43, 111, 213, 0, 194, 166, 194, 38, 147, 59, 0, 60, 147, 59, 0, 60, 43, 111, 43, 0, 201, 59, 0, 60, 147, 59, 147, 59, 0, 60, 0, 60, 43, 43, 111, 0, 201, 59, 27, 60, 255, 59, 147, 59, 147, 59, 0, 60, 111, 43, 43, 0, 255, 59, 27, 60, 0, 188, 147, 59, 147, 59, 0, 60, 145, 43, 43, 0, 0, 0, 201, 59, 147, 187, 147, 59, 255, 59, 0, 60, 213, 43, 111, 0, 194, 38, 255, 59, 147, 187, 147, 59, 0, 188, 0, 60, 213, 43, 145, 0, 194, 38, 0, 60, 255, 187, 147, 59, 147, 187, 0, 60, 145, 43, 213, 0, 0, 0, 27, 60, 147, 187, 0, 60, 147, 187, 0, 60, 213, 111, 213, 0, 194, 38, 27, 60, 0, 60, 147, 187, 147, 187, 0, 60, 111, 213, 213, 0, 0, 0, 194, 38, 0, 60, 147, 187, 147, 59, 0, 60, 111, 213, 43, 0, 0, 0, 201, 59, 147, 59, 0, 188, 147, 59, 0, 60, 43, 145, 43, 0, 194, 166, 201, 59, 147, 59, 0, 188, 147, 187, 0, 60, 43, 145, 213, 0, 194, 166, 194, 38, 147, 59, 147, 187, 255, 187, 0, 60, 43, 213, 145, 0, 201, 59, 0, 0, 147, 59, 0, 188, 147, 187, 0, 60, 43, 145, 213, 0, 201, 59, 194, 38, 0, 60, 147, 59, 147, 187, 0, 60, 111, 43, 213, 0, 0, 60, 194, 38, 0, 60, 147, 187, 147, 187, 0, 60, 111, 213, 213, 0, 0, 60, 201, 59, 255, 59, 147, 59, 147, 59, 0, 60, 111, 43, 43, 0, 0, 0, 194, 38, 147, 59, 147, 59, 0, 60, 0, 60, 43, 43, 111, 0, 194, 166, 194, 38, 147, 59, 147, 187, 0, 60, 0, 60, 43, 213, 111, 0, 194, 166, 201, 59, 147, 187, 0, 188, 147, 187, 0, 60, 213, 145, 213, 0, 201, 59, 0, 60, 147, 187, 0, 188, 147, 59, 0, 60, 213, 145, 43, 0, 194, 38, 0, 60, 0, 188, 147, 59, 147, 59, 0, 60, 145, 43, 43, 0, 0, 0, 194, 38, 0, 188, 147, 187, 147, 59, 0, 60, 145, 213, 43, 0, 0, 0, 201, 59, 255, 187, 147, 187, 147, 187, 0, 60, 145, 213, 213, 0, 0, 0, 201, 59, 255, 187, 147, 59, 147, 187, 0, 60, 145, 43, 213, 0, 0, 0, 194, 38, 255, 59, 147, 59, 147, 59, 0, 60, 111, 43, 43, 0, 255, 59, 201, 59, 0, 60, 147, 59, 147, 187, 0, 60, 111, 43, 213, 0, 0, 60, 194, 38, 147, 59, 147, 59, 255, 187, 0, 60, 43, 43, 145, 0, 201, 59, 0, 0, 147, 187, 147, 59, 0, 188, 0, 60, 213, 43, 145, 0, 194, 38, 0, 0, 147, 59, 147, 59, 0, 60, 0, 60, 43, 43, 111, 0, 201, 59, 0, 60 ),
@@ -18,117 +18,53 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 98067,
 "index_count": 132,
-"material": SubResource( 5 ),
+"material": SubResource( 1 ),
 "name": "Material",
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 65
 }
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape" id=3]
 
-[sub_resource type="PlaneMesh" id=1]
+[node name="Cubio" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 4, 8 )
+script = ExtResource( 1 )
 
-[sub_resource type="BoxShape" id=4]
-
-[sub_resource type="CubeMesh" id=2]
-
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.722656, 0.791992, 1, 1 )
-roughness = 0.0
-
-[node name="GUIin3D" type="Spatial"]
-
-[node name="Cubio" type="KinematicBody" parent="."]
-transform = Transform( -0.00492194, 0, 0.999988, 0, 1, 0, -0.999988, 0, -0.00492194, 0, 0, 2.9748 )
-script = ExtResource( 3 )
-
-[node name="CubeMesh" type="MeshInstance" parent="Cubio"]
+[node name="CubeMesh" type="MeshInstance" parent="."]
 _import_path = NodePath("cube-col")
 transform = Transform( 0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0 )
-mesh = SubResource( 6 )
+mesh = SubResource( 2 )
 material/0 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="Cubio"]
+[node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.95, 0, 0, 0, -4.15258e-08, -0.95, 0, 0.95, -4.15258e-08, 0, 0, 0 )
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
-[node name="Target" type="Spatial" parent="Cubio"]
+[node name="Target" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85165, 0 )
 
-[node name="Camera" type="Camera" parent="Cubio/Target"]
+[node name="Camera" type="Camera" parent="Target"]
 transform = Transform( 0.00880322, -0.305732, 0.952077, 0.00282677, 0.952118, 0.305719, -0.999957, 0, 0.00924594, 4.23538, 1.00622, 0.120926 )
 fov = 74.0
 near = 0.1
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
-[node name="GUIPanel3D" parent="Cubio/Target/Camera" instance=ExtResource( 1 )]
-transform = Transform( 2.12307, 0.00361379, 0.0199826, -0.00273941, 2.12114, -0.0925516, -0.0201211, 0.0925216, 2.12105, 0.0574711, 1.71672, -8.18746 )
-
-[node name="WinText" type="CenterContainer" parent="Cubio"]
+[node name="WinText" type="CenterContainer" parent="."]
 visible = false
 anchor_right = 1.0
 margin_bottom = 100.0
 
-[node name="Holder" type="Control" parent="Cubio/WinText"]
+[node name="Holder" type="Control" parent="WinText"]
 margin_left = 512.0
 margin_top = 50.0
 margin_right = 512.0
 margin_bottom = 50.0
 
-[node name="TextLabel" type="Label" parent="Cubio/WinText/Holder"]
+[node name="TextLabel" type="Label" parent="WinText/Holder"]
 margin_left = -354.0
 margin_bottom = 14.0
 rect_scale = Vector2( 2, 2 )
 text = "Thank You, Cubio! But the Princess is in Another Demo!"
 align = 1
 valign = 1
-
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.38866, 1.2413, 2.72141 )
-shadow_enabled = true
-omni_range = 10.0
-
-[node name="Background" type="Spatial" parent="."]
-
-[node name="Wall" type="MeshInstance" parent="Background"]
-transform = Transform( 4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, -2.60819, 0.589247, -2.08943 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="Background/Wall"]
-transform = Transform( 2.10362, 0, 0, 0, 1, 0, 0, 0, 1, 0.956161, 0.954739, 1.32959 )
-
-[node name="CollisionShape" type="CollisionShape" parent="Background/Wall/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5 )
-shape = SubResource( 4 )
-
-[node name="Wall2" type="MeshInstance" parent="Background"]
-transform = Transform( 4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 5.08055, 0.589247, -2.08943 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="Wall3" type="MeshInstance" parent="Background"]
-transform = Transform( -1.74846e-07, -4, 0, -1.74846e-07, 7.64274e-15, -4, 4, -1.74846e-07, -1.74846e-07, 9.04446, 0.589247, 1.62058 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="Floor" type="MeshInstance" parent="Background"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -2.60819, -2.68765, 1.46502 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="Floor2" type="MeshInstance" parent="Background"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 5.08055, -2.68765, 1.46502 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="Cube" type="MeshInstance" parent="Background"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25901, -0.598608, 0.374871 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
-
-[node name="Cube2" type="MeshInstance" parent="Background"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88761, 2.01326, 0.374871 )
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
