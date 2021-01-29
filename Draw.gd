@@ -39,7 +39,7 @@ func _draw():
 	
 func draw_lines(lines,color:Color):
 	for line in lines:
-		draw_line(line.start,line.end,line.color,line.width)
+		draw_line(line.start,line.end,line.color,line.width,true)
 	
 func draw_points(width:float,color:Color):
 	for point in points:

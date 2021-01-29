@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ArtGame"
+run/main_scene="res://gui_in_3d.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -70,4 +71,6 @@ exit={
 
 [rendering]
 
+quality/filters/use_nearest_mipmap_filter=true
+quality/filters/msaa=4
 environment/default_environment="res://default_env.tres"
