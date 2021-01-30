@@ -47,6 +47,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
+frame = 6
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
