@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Draw.gd" type="Script" id=1]
-[ext_resource path="res://pdollar/GestureRecognizer.gd" type="Script" id=2]
 [ext_resource path="res://pdollar/GestureManager.gd" type="Script" id=3]
 
 [node name="Draw" type="ColorRect"]
@@ -14,9 +13,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 paintWidth = 5.0
-
-[node name="GestureRecognizer" type="Node" parent="."]
-script = ExtResource( 2 )
 
 [node name="GUI" type="Control" parent="."]
 anchor_right = 1.0
@@ -107,3 +103,4 @@ text = "Gesture"
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Save" to="GUI" method="_on_save"]
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUI" method="_on_load"]
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Clear" to="." method="reset"]
+[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Recognize" to="GUI" method="recognize"]

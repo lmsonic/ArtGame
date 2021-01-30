@@ -7,6 +7,8 @@ export(float) var paintWidth=1.0
 var lineStarted:=false
 var strokeId:=-1
 
+onready var labelText := $GUI/MarginContainer/HBoxContainer/VBoxContainer/Label
+
 func _ready():
 	Input.set_use_accumulated_input(false)
 
@@ -14,6 +16,7 @@ func reset():
 	points.resize(0)
 	lines.clear()
 	lineStarted=false
+	labelText.text="Gesture"
 	update()
 
 func _input(event):

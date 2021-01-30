@@ -1,9 +1,7 @@
 extends Node
 
-class_name PointCloudRecognizer
+class_name GestureRecognizer
 
-onready var Gesture :=preload("res://pdollar/Gesture.gd")
-onready var Point :=preload("res://pdollar/Point.gd")
 #/// <summary>
 #/// Main function of the $P recognizer.
 #/// Classifies a candidate gesture against a set of training samples.
@@ -12,7 +10,7 @@ onready var Point :=preload("res://pdollar/Point.gd")
 #/// <param name="candidate"></param>
 #/// <param name="trainingSet"></param>
 #/// <returns></returns>
-func Classify( candidate:Gesture,  trainingSet:Array) -> Dictionary:
+static func Classify( candidate:Gesture,  trainingSet:Array) -> Dictionary:
 	var minDistance:float = INF;
 	var gestureClass := "";
 	for template in trainingSet:
@@ -28,7 +26,7 @@ func Classify( candidate:Gesture,  trainingSet:Array) -> Dictionary:
 #/// <param name="points1"></param>
 #/// <param name="points2"></param>
 #/// <returns></returns>
-func GreedyCloudMatch(points1:Array,  points2:Array) -> float:
+static func GreedyCloudMatch(points1:Array,  points2:Array) -> float:
 	var n:int = points1.size(); #// the two clouds should have 
 								#the same number of points by now
 	var eps:float = 0.5;       	#// controls the number of greedy 
@@ -51,20 +49,37 @@ func GreedyCloudMatch(points1:Array,  points2:Array) -> float:
 #/// <param name="points2"></param>
 #/// <param name="startIndex"></param>
 #/// <returns></returns>
-func CloudDistance(points1:Array,  points2:Array,  startIndex:int) -> float:
+static func CloudDistance(points1:Array,  points2:Array,  startIndex:int) -> float:
 	var n:int = points1.size();      
 	#// the two clouds should have the same number of points by now
 	var matched := []; 
 	#// matched[i] signals whether point i from the 2nd cloud has been already matched
 	for i in range(n):
-		matched[i]=false
+		matched.append(false)
 	#// no points are matched at the beginning
 
 	var sum:float = 0.0;  #// computes the sum of distances between matched points (i.e., the distance between the two clouds)
 	var i:int = startIndex;
+	var index :int = -1;
+	var minDistance:float = INF;
+	for j in range(n):
+		if !matched[j]:
+			var dist:float = Point.SqrEuclideanDistance(points1[i], points2[j]);
+			#  // use squared Euclidean distance to save some processing time
+			if dist < minDistance:
+				minDistance = dist;
+				index = j;
+				
+	matched[index] = true; 
+	#// point index from the 2nd cloud is matched to point i from the 1st cloud
+	var weight:float = 1.0 - ((i - startIndex + n) % n) / (1.0 * n);
+	sum += weight * minDistance; 
+	#// weight each distance with a confidence coefficient that decreases from 1 to 0
+	i = (i + 1) % n;
+	
 	while i != startIndex:
-		var index :int = -1;
-		var minDistance:float = INF;
+		index  = -1;
+		minDistance = INF;
 		for j in range(n):
 			if !matched[j]:
 				var dist:float = Point.SqrEuclideanDistance(points1[i], points2[j]);
@@ -75,7 +90,7 @@ func CloudDistance(points1:Array,  points2:Array,  startIndex:int) -> float:
 					
 		matched[index] = true; 
 		#// point index from the 2nd cloud is matched to point i from the 1st cloud
-		var weight:float = 1.0 - ((i - startIndex + n) % n) / (1.0 * n);
+		weight = 1.0 - ((i - startIndex + n) % n) / (1.0 * n);
 		sum += weight * minDistance; 
 		#// weight each distance with a confidence coefficient that decreases from 1 to 0
 		i = (i + 1) % n;
