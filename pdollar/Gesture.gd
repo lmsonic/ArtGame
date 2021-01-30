@@ -5,16 +5,19 @@ class_name Gesture
 #    /// Implements a gesture as a cloud of points (i.e., an unordered set of points).
 #    /// Gestures are normalized with respect to scale, translated to origin, and resampled into a fixed number of 32 points.
 #    /// </summary>
-onready var Point:=preload("res://pdollar/Point.gd")
+
 var Points:Array           #// gesture points (normalized)
+var OriginalPoints:Array           #// gesture points (normalized)
 var Name: = "";                 #// gesture class
 const SAMPLING_RESOLUTION := 32;
 #/// <summary>
 #/// Constructs a gesture from an array of points
 #/// </summary>
 #/// <param name="points"></param>
+
 func _init(points:Array, gestureName:String = ""):
 	self.Name = gestureName;
+	self.OriginalPoints=points
 	#// normalizes the array of points with respect to scale, origin, 
 	#and number of points
 	self.Points = Scale(points);
@@ -36,12 +39,12 @@ func Scale(points:Array)-> Array:
 		if maxx < points[i].X :maxx = points[i].X;
 		if maxy < points[i].Y :maxy = points[i].Y;
 	
-	var newPoints: = []
+	var newPoints: = Array()
 	var scale:float = max(maxx - minx, maxy - miny);
 	for i in range(points.size()):
-		newPoints[i] = Point.new((points[i].X - minx) / scale, 
+		newPoints.push_back(Point.new((points[i].X - minx) / scale, 
 						(points[i].Y - miny) / scale, 
-						points[i].StrokeID);
+						points[i].StrokeID));
 	return newPoints;
 #/// <summary>
 #/// Translates the array of points by p
@@ -52,9 +55,9 @@ func Scale(points:Array)-> Array:
 func TranslateTo(points:Array, p:Point) -> Array:
 	var newPoints: = []
 	for i in range(points.size()):
-		newPoints[i] = Point.new(points[i].X - p.X, 
+		newPoints.push_back(Point.new(points[i].X - p.X, 
 					points[i].Y - p.Y, 
-					points[i].StrokeID);
+					points[i].StrokeID));
 	return newPoints;
 #/// <summary>
 #/// Computes the centroid for an array of points
@@ -76,7 +79,7 @@ func Centroid(points:Array) -> Point:
 #/// <returns></returns>
 func Resample(points:Array,  n:int) -> Array:
 	var newPoints: = []
-	newPoints[0] = Point.new(points[0].X, points[0].Y, points[0].StrokeID);
+	newPoints.push_back(Point.new(points[0].X, points[0].Y, points[0].StrokeID));
 	var numPoints:= 1;
 
 	var I:float = PathLength(points) / (n - 1); #// computes interval length
@@ -90,10 +93,10 @@ func Resample(points:Array,  n:int) -> Array:
 					#// add interpolated point
 					var t:float = min(max((I - D) / d, 0.0), 1.0);
 					if t==NAN: t = 0.5
-					newPoints[numPoints] = Point.new(
+					newPoints.insert(numPoints,Point.new(
 						(1.0 - t) * firstPoint.X + t * points[i].X,
 						(1.0 - t) * firstPoint.Y + t * points[i].Y,
-						points[i].StrokeID)
+						points[i].StrokeID))
 					numPoints+=1
 					#// update partial length
 					d = D + d - I;
@@ -103,9 +106,9 @@ func Resample(points:Array,  n:int) -> Array:
 			else: D += d;
 
 	if numPoints == n - 1: #// sometimes we fall a rounding-error short of adding the last point, so add it if so
-		newPoints[numPoints] = Point.new(points[points.size() - 1].X, 
+		newPoints.insert(numPoints,Point.new(points[points.size() - 1].X, 
 						points[points.size() - 1].Y, 
-						points[points.size() - 1].StrokeID);
+						points[points.size() - 1].StrokeID));
 		numPoints+=1
 	return newPoints;
 
@@ -121,3 +124,4 @@ func PathLength(points:Array) -> float:
 			length += Point.EuclideanDistance(points[i - 1], points[i]);
 	return length;
 
+		

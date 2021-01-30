@@ -1,26 +1,32 @@
 extends ColorRect
 
-var points:PoolVector2Array=[]
+var points:=[]
 var lines:=[]
-var lastPos:=Vector2()
 export(Color) var paintColor=Color.black
 export(float) var paintWidth=1.0
 var lineStarted:=false
-
+var strokeId:=-1
 
 func _ready():
 	Input.set_use_accumulated_input(false)
 
+func reset():
+	points.resize(0)
+	lines.clear()
+	lineStarted=false
+	update()
+
 func _input(event):
 	if event.is_action_pressed("draw"):
-		points.push_back(event.position)
+		strokeId+=1
+		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 		lineStarted=true
 		update()
 	if event.is_action("draw"):
-		points.push_back(event.position)
+		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 		update()
 	if event.is_action_released("draw"):
-		points.push_back(event.position)
+		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 		lineStarted=false
 		update()
 		
@@ -30,20 +36,22 @@ func _input(event):
 							event.pressure*paintWidth,
 							paintColor)
 		lines.push_back(line)
-		points.push_back(event.position)
+		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 		update()
 
 func _draw():
 	draw_points(2.5,Color.black)
-	#draw_lines(lines,paintColor)
+	#draw_lines(lines)
 	
-func draw_lines(lines,color:Color):
+func draw_lines(lines):
 	for line in lines:
 		draw_line(line.start,line.end,line.color,line.width,true)
 	
 func draw_points(width:float,color:Color):
 	for point in points:
-		draw_circle(point,width,color)
+		var v:Vector2 = Vector2(point.X,point.Y)
+		print(v)
+		draw_circle(v,width,color)
 		
 	
 
@@ -58,5 +66,9 @@ class Line:
 	var end:Vector2
 	var width:float
 	var color:Color
-	
-	
+
+func _on_show_gesture(gesture:Gesture):
+	reset()
+	points=gesture.OriginalPoints
+	update()
+

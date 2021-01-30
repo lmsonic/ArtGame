@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Draw.gd" type="Script" id=1]
 [ext_resource path="res://pdollar/GestureRecognizer.gd" type="Script" id=2]
+[ext_resource path="res://pdollar/GestureManager.gd" type="Script" id=3]
 
 [node name="Draw" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 2.0
+margin_bottom = -3.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -14,3 +17,92 @@ paintWidth = 5.0
 
 [node name="GestureRecognizer" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="GUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/MarginContainer"]
+margin_right = 1022.0
+margin_bottom = 597.0
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
+margin_right = 921.0
+margin_bottom = 597.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer/HBoxContainer"]
+margin_left = 925.0
+margin_right = 1022.0
+margin_bottom = 597.0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 97.0
+margin_bottom = 455.0
+size_flags_vertical = 3
+
+[node name="TextEdit" type="LineEdit" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 459.0
+margin_right = 97.0
+margin_bottom = 483.0
+caret_blink_speed = 0.1
+
+[node name="Save" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 487.0
+margin_right = 97.0
+margin_bottom = 507.0
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+text = "Add Gesture"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Load" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 511.0
+margin_right = 97.0
+margin_bottom = 531.0
+text = "Load Gesture"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clear" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 535.0
+margin_right = 97.0
+margin_bottom = 555.0
+text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Recognize" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 559.0
+margin_right = 97.0
+margin_bottom = 579.0
+text = "Recognize"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 583.0
+margin_right = 97.0
+margin_bottom = 597.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gesture"
+[connection signal="show_gesture" from="GUI" to="." method="_on_show_gesture"]
+[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Save" to="GUI" method="_on_save"]
+[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUI" method="_on_load"]
+[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Clear" to="." method="reset"]

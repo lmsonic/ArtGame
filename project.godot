@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://pdollar/Gesture.gd"
 }, {
 "base": "Node",
+"class": "GestureIO",
+"language": "GDScript",
+"path": "res://pdollar/GestureIO.gd"
+}, {
+"base": "Node",
 "class": "Point",
 "language": "GDScript",
 "path": "res://pdollar/Point.gd"
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Gesture": "",
+"GestureIO": "",
 "Point": "",
 "PointCloudRecognizer": ""
 }

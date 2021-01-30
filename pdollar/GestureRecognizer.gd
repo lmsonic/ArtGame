@@ -12,7 +12,7 @@ onready var Point :=preload("res://pdollar/Point.gd")
 #/// <param name="candidate"></param>
 #/// <param name="trainingSet"></param>
 #/// <returns></returns>
-func Classify( candidate:Gesture,  trainingSet:Array) -> String:
+func Classify( candidate:Gesture,  trainingSet:Array) -> Dictionary:
 	var minDistance:float = INF;
 	var gestureClass := "";
 	for template in trainingSet:
@@ -20,7 +20,7 @@ func Classify( candidate:Gesture,  trainingSet:Array) -> String:
 		if dist < minDistance:
 			minDistance = dist;
 			gestureClass = template.Name;
-	return gestureClass;
+	return {GestureClass = "No match", Score = 0.0} if gestureClass == "" else {GestureClass = gestureClass, Score = max((minDistance - 2.0) / -2.0, 0.0)}
 
 #/// <summary>
 #/// Implements greedy search for a minimum-distance matching between two point clouds
