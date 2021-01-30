@@ -24,4 +24,3 @@ func _on_load():
 		else:
 			print("Could not find gesture")
 
-

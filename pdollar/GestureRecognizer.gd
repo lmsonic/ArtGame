@@ -80,3 +80,6 @@ func CloudDistance(points1:Array,  points2:Array,  startIndex:int) -> float:
 		#// weight each distance with a confidence coefficient that decreases from 1 to 0
 		i = (i + 1) % n;
 	return sum;
+
+
+

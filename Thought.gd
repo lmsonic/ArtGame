@@ -4,9 +4,10 @@ export(Array,Texture) onready var thoughtsTexture
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$MarginContainer/TextureRect.texture=thoughtsTexture[0]
+	var children = $MarginContainer/HBoxContainer.get_children()
+	var i:=0
+	for child in children:
+		if (children.size()>i):
+			child.texture=thoughtsTexture[i]
+			i+=1
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
