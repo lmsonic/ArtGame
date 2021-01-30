@@ -3,13 +3,13 @@
 [ext_resource path="res://gui_panel_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://kinematic character/follow_camera.gd" type="Script" id=2]
 [ext_resource path="res://kinematic character/cubio.gd" type="Script" id=3]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo3.png" type="Texture" id=4]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo4.png" type="Texture" id=5]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo5.png" type="Texture" id=6]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo6.png" type="Texture" id=7]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo7.png" type="Texture" id=8]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo1.png" type="Texture" id=9]
-[ext_resource path="res://assets/main_character/sprite basedietro fermo2.png" type="Texture" id=10]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo2.png" type="Texture" id=4]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo6.png" type="Texture" id=5]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo1.png" type="Texture" id=6]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo5.png" type="Texture" id=7]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo4.png" type="Texture" id=8]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo7.png" type="Texture" id=9]
+[ext_resource path="res://assets/protag frames/sprite basedietro fermo3.png" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -18,7 +18,7 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
@@ -47,7 +47,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
-frame = 6
+frame = 5
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
