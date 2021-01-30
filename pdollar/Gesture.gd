@@ -8,6 +8,7 @@ class_name Gesture
 
 var Points:Array           #// gesture points (normalized)
 var OriginalPoints:Array           #// gesture points (normalized)
+var Lines:Array           #// gesture points (normalized)
 var Name: = "";                 #// gesture class
 const SAMPLING_RESOLUTION := 32;
 #/// <summary>
@@ -15,9 +16,10 @@ const SAMPLING_RESOLUTION := 32;
 #/// </summary>
 #/// <param name="points"></param>
 
-func _init(points:Array, gestureName:String = ""):
+func _init(points:Array,lines:Array, gestureName:String = ""):
 	self.Name = gestureName;
 	self.OriginalPoints=points
+	self.Lines=lines
 	#// normalizes the array of points with respect to scale, origin, 
 	#and number of points
 	self.Points = Scale(points);

@@ -10,9 +10,8 @@ func _init(x:float,y:float,strokeId:int):
 	self.X = x;
 	self.Y = y;
 	self.StrokeID = strokeId;
-	
 func _to_json():
-	return "{\"X\" : %d,\"Y\" : %d,\"StrokeID\" :%d}," % [self.X,self.Y,self.StrokeID]
+	return "{\"X\" : %d,\"Y\" : %d,\"StrokeID\" :%d}" % [self.X,self.Y,self.StrokeID]	
 
 static func SqrEuclideanDistance(a:Point,b:Point)-> float:
 	return (a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y);

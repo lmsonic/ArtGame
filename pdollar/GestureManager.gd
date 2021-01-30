@@ -10,7 +10,8 @@ func _on_save():
 	var name:String=textEdit.text
 	if name!="":
 		var points = get_parent().points
-		GestureIO.save_gesture(Gesture.new(points,name))
+		var lines = get_parent().lines
+		GestureIO.save_gesture(Gesture.new(points,lines,name))
 	else:
 		print("Name cannot be empty")
 

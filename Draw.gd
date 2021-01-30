@@ -41,7 +41,7 @@ func _input(event):
 
 func _draw():
 	draw_points(2.5,Color.black)
-	#draw_lines(lines)
+	draw_lines(lines)
 	
 func draw_lines(lines):
 	for line in lines:
@@ -55,20 +55,9 @@ func draw_points(width:float,color:Color):
 		
 	
 
-class Line:
-	func _init(start,end,width,color):
-		self.start=start
-		self.end=end
-		self.width=width
-		self.color=color
-	
-	var start:Vector2
-	var end:Vector2
-	var width:float
-	var color:Color
-
 func _on_show_gesture(gesture:Gesture):
 	reset()
 	points=gesture.OriginalPoints
+	lines=gesture.Lines
 	update()
 
