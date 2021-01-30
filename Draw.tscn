@@ -15,6 +15,7 @@ __meta__ = {
 paintWidth = 5.0
 
 [node name="GUI" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -34,31 +35,44 @@ margin_right = 1022.0
 margin_bottom = 597.0
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
-margin_right = 921.0
+margin_right = 252.0
+margin_bottom = 597.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
+margin_left = 256.0
+margin_right = 509.0
+margin_bottom = 597.0
+size_flags_horizontal = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
+margin_left = 513.0
+margin_right = 765.0
 margin_bottom = 597.0
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer/HBoxContainer"]
-margin_left = 925.0
+margin_left = 769.0
 margin_right = 1022.0
 margin_bottom = 597.0
+size_flags_horizontal = 3
 alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 97.0
-margin_bottom = 455.0
+margin_right = 253.0
+margin_bottom = 431.0
 size_flags_vertical = 3
 
 [node name="TextEdit" type="LineEdit" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 459.0
-margin_right = 97.0
-margin_bottom = 483.0
+margin_top = 435.0
+margin_right = 253.0
+margin_bottom = 459.0
 caret_blink_speed = 0.1
 
 [node name="Save" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 487.0
-margin_right = 97.0
-margin_bottom = 507.0
+margin_top = 463.0
+margin_right = 253.0
+margin_bottom = 483.0
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 text = "Add Gesture"
 __meta__ = {
@@ -66,35 +80,44 @@ __meta__ = {
 }
 
 [node name="Load" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 511.0
-margin_right = 97.0
-margin_bottom = 531.0
+margin_top = 487.0
+margin_right = 253.0
+margin_bottom = 507.0
 text = "Load Gesture"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Clear" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 535.0
-margin_right = 97.0
-margin_bottom = 555.0
+margin_top = 511.0
+margin_right = 253.0
+margin_bottom = 531.0
 text = "Clear"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Recognize" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 559.0
-margin_right = 97.0
-margin_bottom = 579.0
+margin_top = 535.0
+margin_right = 253.0
+margin_bottom = 555.0
 text = "Recognize"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteGestures" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 559.0
+margin_right = 253.0
+margin_bottom = 579.0
+text = "Delete Gestures"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 583.0
-margin_right = 97.0
+margin_right = 253.0
 margin_bottom = 597.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gesture"
@@ -104,3 +127,4 @@ text = "Gesture"
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUI" method="_on_load"]
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Clear" to="." method="reset"]
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Recognize" to="GUI" method="recognize"]
+[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/DeleteGestures" to="GUI" method="_on_DeleteGestures_button_down"]

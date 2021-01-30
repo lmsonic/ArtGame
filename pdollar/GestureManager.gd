@@ -14,8 +14,9 @@ func _ready():
 	
 func recognize():
 	var points = get_parent().points
-	var result = GestureRecognizer.Classify(Gesture.new(points,[],""),trainingSet)
-	textLabel.text = result.GestureClass+' '+ str(result.Score)
+	if points:
+		var result = GestureRecognizer.Classify(Gesture.new(points,[],""),trainingSet)
+		textLabel.text = result.GestureClass+' '+ str(result.Score)
 
 func _on_save():
 	var name:String=textEdit.text
@@ -41,3 +42,7 @@ func _on_load():
 		else:
 			print("Could not find gesture")
 
+
+
+func _on_DeleteGestures_button_down():
+	GestureIO.delete_gestures()

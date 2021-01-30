@@ -17,6 +17,8 @@ const default_data :Dictionary = {
 static func save_gesture(gesture:Gesture):
 	var data :Dictionary = default_data
 	data.Name=gesture.Name
+	if !gesture.OriginalPoints:
+		return
 	var i:=0
 	for point in gesture.OriginalPoints:
 		data.OriginalPoints[str(i)]=point._to_json()
@@ -103,3 +105,7 @@ static func load_gestures() -> Array :
 		var gesture = Gesture.new(originalGesturePoints,lines,k)
 		gestures.push_back(gesture)
 	return gestures
+	
+static func delete_gestures():
+	var dir = Directory.new()
+	dir.remove("user://gestures.json") 
