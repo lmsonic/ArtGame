@@ -8,9 +8,26 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Gesture",
+"language": "GDScript",
+"path": "res://pdollar/Gesture.gd"
+}, {
+"base": "Node",
+"class": "Point",
+"language": "GDScript",
+"path": "res://pdollar/Point.gd"
+}, {
+"base": "Node",
+"class": "PointCloudRecognizer",
+"language": "GDScript",
+"path": "res://pdollar/GestureRecognizer.gd"
+} ]
 _global_script_class_icons={
-
+"Gesture": "",
+"Point": "",
+"PointCloudRecognizer": ""
 }
 
 [application]
@@ -71,6 +88,4 @@ exit={
 
 [rendering]
 
-quality/filters/use_nearest_mipmap_filter=true
-quality/filters/msaa=4
 environment/default_environment="res://default_env.tres"

@@ -34,8 +34,8 @@ func _input(event):
 		update()
 
 func _draw():
-	#draw_points(2.5,Color.black)
-	draw_lines(lines,paintColor)
+	draw_points(2.5,Color.black)
+	#draw_lines(lines,paintColor)
 	
 func draw_lines(lines,color:Color):
 	for line in lines:
