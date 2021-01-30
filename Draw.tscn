@@ -19,6 +19,7 @@ paintWidth = 5.0
 script = ExtResource( 2 )
 
 [node name="GUI" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -103,6 +104,6 @@ margin_bottom = 597.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gesture"
 [connection signal="show_gesture" from="GUI" to="." method="_on_show_gesture"]
-[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Save" to="GUI" method="_on_save"]
+[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Save" to="." method="_on_Save_button_down"]
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUI" method="_on_load"]
 [connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Clear" to="." method="reset"]

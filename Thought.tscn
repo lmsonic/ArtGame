@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Thought.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.752941, 0.752941, 0.752941, 1 )
+corner_radius_top_left = 301
+corner_radius_top_right = 267
+corner_radius_bottom_right = 257
+corner_radius_bottom_left = 345
+shadow_size = 25
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel3" type="Panel" parent="."]
+margin_left = 420.0
+margin_top = 48.5813
+margin_right = 850.0
+margin_bottom = 388.581
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+thoughtsTexture = [ ExtResource( 2 ) ]
+
+[node name="TextureRect" type="TextureRect" parent="Panel3"]
+margin_left = 90.598
+margin_top = 46.9167
+margin_right = 336.598
+margin_bottom = 279.917
+expand = true
+
+[node name="Panel4" type="Panel" parent="."]
+margin_left = 344.0
+margin_top = 373.0
+margin_right = 441.0
+margin_bottom = 482.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel5" type="Panel" parent="."]
+margin_left = 254.525
+margin_top = 411.674
+margin_right = 285.525
+margin_bottom = 453.674
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

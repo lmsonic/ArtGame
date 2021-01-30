@@ -40,7 +40,7 @@ func _input(event):
 		update()
 
 func _draw():
-	draw_points(2.5,Color.black)
+	#draw_points(2.5,Color.black)
 	draw_lines(lines)
 	
 func draw_lines(lines):
@@ -59,4 +59,5 @@ func _on_show_gesture(gesture:Gesture):
 	points=gesture.OriginalPoints
 	lines=gesture.Lines
 	update()
+
 
