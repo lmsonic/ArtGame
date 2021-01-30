@@ -50,7 +50,6 @@ func draw_lines(lines):
 func draw_points(width:float,color:Color):
 	for point in points:
 		var v:Vector2 = Vector2(point.X,point.Y)
-		print(v)
 		draw_circle(v,width,color)
 		
 	
