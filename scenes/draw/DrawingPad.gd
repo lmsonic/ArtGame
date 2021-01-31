@@ -7,10 +7,11 @@ onready var draw=$GUIPanel3D/Viewport/Draw
 
 #when the drawing is extracted/zipped, the player stops, the drawing stops
 func set_extracted(value:bool):
-	extracted=value
-	draw.extracted=value
-	player.extracted=value
-	player.get_node("AnimatedSprite3D").play("idle")
+	if Globals.notebook_collected:
+		extracted=value
+		draw.extracted=value
+		player.extracted=value
+		player.get_node("AnimatedSprite3D").play("idle")
 	#print(extracted)
 	
 
@@ -20,9 +21,10 @@ func set_extracted(value:bool):
 #extacts/zips the drawing
 func _input(event):
 	if event.is_action_pressed("ui_select"):
-		if not extracted:
-			$AnimationPlayer.play("extract")
-			self.extracted=!extracted
-		else:
-			$AnimationPlayer.play("zip")
-			self.extracted=!extracted
+		if Globals.notebook_collected:
+			if not extracted:
+				$AnimationPlayer.play("extract")
+				self.extracted=!extracted
+			else:
+				$AnimationPlayer.play("zip")
+				self.extracted=!extracted

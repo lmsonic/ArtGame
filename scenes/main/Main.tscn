@@ -1,7 +1,23 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/main/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sfondo.png" type="Texture" id=2]
+[ext_resource path="res://assets/objects/dollie2.png" type="Texture" id=3]
+[ext_resource path="res://scenes/characters/Mad.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/objects/baule.png" type="Texture" id=5]
+[ext_resource path="res://scenes/objects/Doll.gd" type="Script" id=6]
+[ext_resource path="res://assets/objects/baul2.png" type="Texture" id=7]
+[ext_resource path="res://assets/objects/dollie1.png" type="Texture" id=8]
+[ext_resource path="res://assets/objects/flower.png" type="Texture" id=9]
+[ext_resource path="res://assets/objects/flower2.png" type="Texture" id=10]
+[ext_resource path="res://assets/objects/window 2.png" type="Texture" id=11]
+[ext_resource path="res://assets/objects/window 1.png" type="Texture" id=12]
+[ext_resource path="res://scenes/objects/Notebook.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/objects/door2.png" type="Texture" id=14]
+[ext_resource path="res://assets/objects/door4.png" type="Texture" id=15]
+[ext_resource path="res://assets/objects/door3.png" type="Texture" id=16]
+[ext_resource path="res://assets/objects/door5.png" type="Texture" id=17]
+[ext_resource path="res://assets/objects/door1.png" type="Texture" id=18]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_texture = ExtResource( 2 )
@@ -10,6 +26,84 @@ uv1_offset = Vector3( 0, -1.274, 0 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "red",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "mad",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+} ]
 
 [node name="Main" type="Spatial"]
 
@@ -92,3 +186,69 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2, -
 width = 24.0
 depth = 20.0
 material = SubResource( 2 )
+
+[node name="Objects" type="Spatial" parent="."]
+
+[node name="Chest" type="AnimatedSprite3D" parent="Objects"]
+transform = Transform( 2.03104, 0, 0, 0, 2.03104, 0, 0, 0, 2.03104, 0, 5.2188, 5.7317 )
+billboard = 2
+frames = SubResource( 3 )
+animation = "open"
+
+[node name="Spatial" type="Spatial" parent="Objects/Chest" groups=[
+"recognized",
+]]
+script = ExtResource( 6 )
+
+[node name="Doll" type="AnimatedSprite3D" parent="Objects/Chest/Spatial"]
+transform = Transform( 0.377897, 0, 0, 0, 0.377897, 0, 0, 0, 1, -0.0861903, 0.0630195, -0.352082 )
+billboard = 2
+frames = SubResource( 4 )
+
+[node name="CSGBox" type="CSGBox" parent="Objects/Chest"]
+transform = Transform( 0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, -0.00181998, -0.702273, 0.00855803 )
+material = SubResource( 5 )
+
+[node name="Flowers" type="Spatial" parent="Objects"]
+
+[node name="Flower" type="AnimatedSprite3D" parent="Objects/Flowers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3909, 3.65112, 3.84873 )
+billboard = 2
+frames = SubResource( 6 )
+playing = true
+
+[node name="Flower2" type="AnimatedSprite3D" parent="Objects/Flowers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3909, 3.65112, -25.7142 )
+billboard = 2
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
+[node name="Flower3" type="AnimatedSprite3D" parent="Objects/Flowers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5476, 3.65112, -25.7142 )
+billboard = 2
+frames = SubResource( 6 )
+frame = 1
+playing = true
+
+[node name="Flower4" type="AnimatedSprite3D" parent="Objects/Flowers"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5476, 3.65112, 4.86023 )
+billboard = 2
+frames = SubResource( 6 )
+playing = true
+
+[node name="Notebook" parent="Objects" instance=ExtResource( 13 )]
+
+[node name="Windows" type="AnimatedSprite3D" parent="Objects"]
+transform = Transform( -1.09092e-07, 0, 2.49573, 0, 2.49573, 0, -2.49573, 0, -1.09092e-07, 15.3476, 6.96535, -7.61006 )
+frames = SubResource( 7 )
+
+[node name="Door" type="AnimatedSprite3D" parent="Objects"]
+transform = Transform( 1.6436, 0, 0, 0, 1.6436, 0, 0, 0, 1.6436, -1.29287, 5.43153, -28.9403 )
+frames = SubResource( 8 )
+animation = "1"
+
+[node name="Characters" type="Spatial" parent="."]
+
+[node name="Mad" parent="Characters" instance=ExtResource( 4 )]
+transform = Transform( 1.42968, 0, 0, 0, 1.42968, 0, 0, 0, 1.42968, 6.78274, 5.38746, 4.2437 )

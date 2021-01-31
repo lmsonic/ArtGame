@@ -1,5 +1,6 @@
 extends KinematicBody
 
+class_name Player
 var gravity = Vector3.DOWN * 12  # strength of gravity
 
 var speed = 4  # movement speed
