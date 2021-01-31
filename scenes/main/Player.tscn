@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/draw/DrawingPad.gd" type="Script" id=1]
 [ext_resource path="res://scenes/draw/gui_panel_3d.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/characters/protag/sprite basedietro fermo6.png" type="Texture" id=9]
 [ext_resource path="res://assets/characters/protag/sprite basedietro fermo3.png" type="Texture" id=10]
 [ext_resource path="res://assets/characters/protag/sprite basedietro fermo2.png" type="Texture" id=11]
+[ext_resource path="res://assets/fonts/Daily Hours.ttf" type="DynamicFontData" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -112,6 +113,10 @@ tracks/2/keys = {
 "values": [ Vector3( 1.66821, 1.70475, 1.19265 ), Vector3( 0.530595, 0.530595, 0.530595 ), Vector3( 0.530595, 0.530595, 0.530595 ) ]
 }
 
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 12 )
+
 [node name="Player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.37032, 2.9748 )
 script = ExtResource( 4 )
@@ -142,4 +147,27 @@ transform = Transform( 0.509841, 1.66036e-07, -0.146946, -0.0406962, 0.509841, -
 anims/extract = SubResource( 3 )
 anims/zip = SubResource( 4 )
 
-[node name="Bubbles" parent="Camera" instance=ExtResource( 3 )]
+[node name="Bubbles" parent="Camera" groups=[
+"bubbles",
+] instance=ExtResource( 3 )]
+visible = false
+
+[node name="Commands" type="RichTextLabel" parent="Camera/Bubbles"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 556.0
+margin_top = -117.0
+margin_right = -135.0
+margin_bottom = -75.0
+custom_fonts/normal_font = SubResource( 5 )
+text = "Use spacebar to open notebook"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="Camera/Bubbles"]
+wait_time = 3.0
+autostart = true
+[connection signal="timeout" from="Camera/Bubbles/Timer" to="Camera/Bubbles" method="_on_Timer_timeout"]
