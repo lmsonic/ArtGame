@@ -9,6 +9,13 @@ var strokeId:=-1
 
 onready var labelText := $GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Label
 
+var extracted:=false setget set_extracted
+
+func set_extracted(value:bool):
+	extracted=value
+	set_process(value)
+	set_physics_process(value)
+
 func _ready():
 	Input.set_use_accumulated_input(false)
 
@@ -21,32 +28,34 @@ func reset():
 	update()
 
 func _input(event):
-	if event.is_action_pressed("draw"):
-		strokeId+=1
-		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
-		lineStarted=true
-		update()
-	if event.is_action("draw"):
-		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
-		update()
-	if event.is_action_released("draw"):
-		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
-		$GUIRecognizer/Timer.start(2.0)
-		lineStarted=false
-		update()
-		
-	if lineStarted and event is InputEventMouseMotion:
-		var line: = Line.new(event.position,
-							event.position-event.relative,
-							event.pressure*paintWidth,
-							paintColor)
-		lines.push_back(line)
-		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
-		update()
+	if extracted:
+		if event.is_action_pressed("draw"):
+			strokeId+=1
+			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
+			lineStarted=true
+			update()
+		if event.is_action("draw"):
+			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
+			update()
+		if event.is_action_released("draw"):
+			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
+			$GUIRecognizer/Timer.start(2.0)
+			lineStarted=false
+			update()
+			
+		if lineStarted and event is InputEventMouseMotion:
+			var line: = Line.new(event.position,
+								event.position-event.relative,
+								event.pressure*paintWidth,
+								paintColor)
+			lines.push_back(line)
+			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
+			update()
 
 func _draw():
 	#draw_points(2.5,Color.black)
-	draw_lines(lines)
+	if extracted:
+		draw_lines(lines)
 	
 func draw_lines(lines):
 	for line in lines:

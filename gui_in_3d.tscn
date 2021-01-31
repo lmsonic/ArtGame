@@ -160,7 +160,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
-frame = 1
+frame = 6
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
@@ -176,7 +176,7 @@ near = 0.1
 script = ExtResource( 20 )
 
 [node name="GUIPanel3D" parent="Cubio/Camera/DrawingPad" instance=ExtResource( 1 )]
-transform = Transform( 0.509841, 7.90649e-09, -0.146946, -0.0406962, 0.509841, -0.141199, 0.141199, 0.146946, 0.489899, 5.52937, -0.579195, -2.775 )
+transform = Transform( 0.509841, 1.66036e-07, -0.146946, -0.0406962, 0.509841, -0.141198, 0.141198, 0.146946, 0.489899, 5.52937, -0.579195, -2.775 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cubio/Camera/DrawingPad"]
 anims/extract = SubResource( 3 )
@@ -267,6 +267,7 @@ script = ExtResource( 19 )
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Background/Mad"]
 billboard = 2
 frames = SubResource( 10 )
+frame = 1
 playing = true
 
 [node name="StaticBody" type="StaticBody" parent="Background/Mad/AnimatedSprite3D"]
