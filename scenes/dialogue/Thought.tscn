@@ -1,28 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://scenes/dialogue/Thought.gd" type="Script" id=1]
-[ext_resource path="res://assets/dialogue/thoughts/eye2.png" type="Texture" id=2]
-[ext_resource path="res://assets/dialogue/thoughts/eye.png" type="Texture" id=3]
-[ext_resource path="res://assets/dialogue/thoughts/mouth.png" type="Texture" id=4]
-[ext_resource path="res://assets/dialogue/thoughts/hand.png" type="Texture" id=5]
-[ext_resource path="res://assets/dialogue/thoughts/sad.png" type="Texture" id=6]
-[ext_resource path="res://assets/dialogue/thoughts/hands2.png" type="Texture" id=7]
-[ext_resource path="res://assets/dialogue/thoughts/happ.png" type="Texture" id=8]
-[ext_resource path="res://assets/dialogue/bubbles/nuv coda1.png" type="Texture" id=9]
-[ext_resource path="res://assets/dialogue/bubbles/nuv coda2.png" type="Texture" id=10]
-[ext_resource path="res://assets/dialogue/bubbles/nuvoletta.png" type="Texture" id=11]
-
-[sub_resource type="StyleBoxTexture" id=1]
-texture = ExtResource( 11 )
-region_rect = Rect2( 0, 0, 128, 128 )
-
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 9 )
-region_rect = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 10 )
-region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -35,37 +13,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel3" type="Panel" parent="."]
-margin_left = 333.0
-margin_top = -4.0
-margin_right = 998.0
-margin_bottom = 478.0
-custom_styles/panel = SubResource( 1 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-thoughtsTexture = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 6 ) ]
-
-[node name="MarginContainer" type="MarginContainer" parent="Panel3"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 87.0
-margin_top = 93.0
-margin_right = -94.0
-margin_bottom = -125.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="GridContainer" parent="Panel3/MarginContainer"]
-margin_right = 484.0
-margin_bottom = 264.0
-columns = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 1 )
+thoughtsTexture = [ null, null, null ]
 
-[node name="TextureRect" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_right = 240.0
-margin_bottom = 63.0
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_right = 338.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_left = 342.0
+margin_right = 681.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = true
@@ -74,96 +48,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect3" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_left = 244.0
-margin_right = 484.0
-margin_bottom = 63.0
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+margin_left = 685.0
+margin_right = 1024.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = true
 stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_top = 67.0
-margin_right = 240.0
-margin_bottom = 130.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect4" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_left = 244.0
-margin_top = 67.0
-margin_right = 484.0
-margin_bottom = 130.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect5" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_top = 134.0
-margin_right = 240.0
-margin_bottom = 197.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect6" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_left = 244.0
-margin_top = 134.0
-margin_right = 484.0
-margin_bottom = 197.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect7" type="TextureRect" parent="Panel3/MarginContainer/HBoxContainer"]
-margin_top = 201.0
-margin_right = 240.0
-margin_bottom = 264.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel4" type="Panel" parent="."]
-margin_left = 270.584
-margin_top = 383.524
-margin_right = 497.584
-margin_bottom = 610.524
-custom_styles/panel = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel5" type="Panel" parent="."]
-margin_left = 151.276
-margin_top = 385.243
-margin_right = 304.276
-margin_bottom = 538.243
-custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

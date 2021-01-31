@@ -18,3 +18,4 @@ billboard = 2
 texture = ExtResource( 2 )
 
 [node name="dialogue" parent="." instance=ExtResource( 1 )]
+transform = Transform( 2.37659, 3.23e-10, 6.20176e-10, 0, 1.80517, 0.100709, 0, 0.181988, 1.31934, 3.76433, 3.1047, 3.55429 )
