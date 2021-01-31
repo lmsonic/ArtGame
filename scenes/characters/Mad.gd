@@ -1,6 +1,5 @@
-extends "res://scenes/objects/Recognized.gd"
+extends Spatial
 
-
-func triggered(result):
-	if result=='arrow':
+func _on_StaticBody_body_entered(body):
+	if body is Player and Globals.has_key:
 		$AnimatedSprite3D.play("mad")

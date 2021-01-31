@@ -38,8 +38,9 @@ billboard = 2
 frames = SubResource( 1 )
 playing = true
 
-[node name="StaticBody" type="StaticBody" parent="AnimatedSprite3D"]
+[node name="StaticBody" type="Area" parent="AnimatedSprite3D"]
 
 [node name="CollisionShape" type="CollisionShape" parent="AnimatedSprite3D/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1.327, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 2 )
+[connection signal="body_entered" from="AnimatedSprite3D/StaticBody" to="." method="_on_StaticBody_body_entered"]

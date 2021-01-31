@@ -14,10 +14,15 @@ var extracted:=true  setget set_extracted
 #when the drawing is extracted/zipped, the viewport stops
 func set_extracted(value:bool):
 	extracted=value
+	set_process(value)
+
 
 #extra precision
 func _ready():
 	Input.set_use_accumulated_input(false)
+	set_process(false)
+
+
 
 	
 func reset():

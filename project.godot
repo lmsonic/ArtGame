@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/pdollar/Point.gd"
 }, {
-"base": "Node",
+"base": "Spatial",
 "class": "Recognized",
 "language": "GDScript",
 "path": "res://scenes/objects/Recognized.gd"
