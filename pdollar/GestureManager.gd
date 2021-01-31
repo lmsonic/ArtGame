@@ -7,7 +7,7 @@ signal recognized(shape)
 const gesture_folder = "user://gestures"
 onready var textEdit := $MarginContainer/HBoxContainer/VBoxContainer/TextEdit
 onready var textLabel:=$MarginContainer/HBoxContainer/VBoxContainer/Label
-export var threshold:= 0.75
+export var threshold:= 0.5
 
 func update_gestures():
 	trainingSet=GestureIO.load_gestures()
@@ -21,8 +21,10 @@ func recognize():
 	if points and points.size()>5:
 		var result = GestureRecognizer.Classify(Gesture.new(points,[],""),trainingSet)
 		textLabel.text = result.GestureClass+' '+ str(result.Score)
+		emit_signal("clear")
 		if result.Score>threshold:
 			emit_signal("recognized",result.GestureClass)
+		
 
 func _on_save():
 	var name:String=textEdit.text

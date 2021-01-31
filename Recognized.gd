@@ -1,4 +1,4 @@
-extends Node
+extends MeshInstance
 
 class_name Recognized
 # Declare member variables here. Examples:
@@ -16,6 +16,9 @@ func connect_signal(node:Node):
 func triggered(result):
 	if result=="triangle":
 		print("Triggerato")
+		var mat:Material = get_surface_material(0)
+		mat.albedo_color=Color.red
+		set_surface_material(0,mat)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

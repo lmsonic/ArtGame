@@ -17,7 +17,7 @@ func reset():
 	points.resize(0)
 	lines.clear()
 	lineStarted=false
-	labelText.text="Gesture"
+	#labelText.text="Gesture"
 	update()
 
 func _input(event):

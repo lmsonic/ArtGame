@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Draw.gd" type="Script" id=1]
+[ext_resource path="res://assets/Daily Hours.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://pdollar/GestureManager.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 70
+font_data = ExtResource( 2 )
 
 [node name="Draw" type="ColorRect"]
 anchor_right = 1.0
@@ -59,19 +64,19 @@ alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 253.0
-margin_bottom = 431.0
+margin_bottom = 350.0
 size_flags_vertical = 3
 
 [node name="TextEdit" type="LineEdit" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 435.0
+margin_top = 354.0
 margin_right = 253.0
-margin_bottom = 459.0
+margin_bottom = 378.0
 caret_blink_speed = 0.1
 
 [node name="Save" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 463.0
+margin_top = 382.0
 margin_right = 253.0
-margin_bottom = 483.0
+margin_bottom = 402.0
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 text = "Add Gesture"
 __meta__ = {
@@ -79,52 +84,54 @@ __meta__ = {
 }
 
 [node name="Load" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 487.0
+margin_top = 406.0
 margin_right = 253.0
-margin_bottom = 507.0
+margin_bottom = 426.0
 text = "Load Gesture"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Clear" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 511.0
+margin_top = 430.0
 margin_right = 253.0
-margin_bottom = 531.0
+margin_bottom = 450.0
 text = "Clear"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Recognize" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 535.0
+margin_top = 454.0
 margin_right = 253.0
-margin_bottom = 555.0
+margin_bottom = 474.0
 text = "Recognize"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="DeleteGestures" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 559.0
+margin_top = 478.0
 margin_right = 253.0
-margin_bottom = 579.0
+margin_bottom = 498.0
 text = "Delete Gestures"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 583.0
+margin_top = 502.0
 margin_right = 253.0
 margin_bottom = 597.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.27
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gesture"
 
 [node name="Timer" type="Timer" parent="GUIRecognizer"]
 one_shot = true
 [connection signal="clear" from="GUIRecognizer" to="." method="reset"]
-[connection signal="recognized" from="GUIRecognizer" to="." method="_on_GUIRecognizer_recognized"]
 [connection signal="show_gesture" from="GUIRecognizer" to="." method="_on_show_gesture"]
 [connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Save" to="GUIRecognizer" method="_on_save"]
 [connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUIRecognizer" method="_on_load"]
