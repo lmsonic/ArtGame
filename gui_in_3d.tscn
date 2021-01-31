@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://gui_panel_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Recognized.gd" type="Script" id=2]
@@ -10,6 +10,16 @@
 [ext_resource path="res://assets/protag frames/sprite basedietro fermo4.png" type="Texture" id=8]
 [ext_resource path="res://assets/protag frames/sprite basedietro fermo7.png" type="Texture" id=9]
 [ext_resource path="res://assets/protag frames/sprite basedietro fermo3.png" type="Texture" id=10]
+[ext_resource path="res://assets/npc framea/npc hand mad1.png" type="Texture" id=11]
+[ext_resource path="res://assets/npc framea/npc hand2.png" type="Texture" id=12]
+[ext_resource path="res://assets/npc framea/npc hand mad5.png" type="Texture" id=13]
+[ext_resource path="res://assets/npc framea/npc hand1.png" type="Texture" id=14]
+[ext_resource path="res://assets/npc framea/npc hand mad4.png" type="Texture" id=15]
+[ext_resource path="res://assets/npc framea/npc hand mad3.png" type="Texture" id=16]
+[ext_resource path="res://assets/npc framea/npc hand mad6.png" type="Texture" id=17]
+[ext_resource path="res://assets/npc framea/npc hand mad2.png" type="Texture" id=18]
+[ext_resource path="res://Mad.gd" type="Script" id=19]
+[ext_resource path="res://DrawingPad.gd" type="Script" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,6 +42,84 @@ animations = [ {
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.583372
 
+[sub_resource type="Animation" id=12]
+resource_name = "extract"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GUIPanel3D:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.52937, -0.579195, -2.775 ), Vector3( 3.20042, -0.579195, -2.775 ), Vector3( 2.80979, -0.160939, -5.54429 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GUIPanel3D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 15.4331, -16.6967, -4.56375 ), Vector3( 3.13794, -9.70092, -54.2223 ), Vector3( 5.17055, 1.75474e-13, -90 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GUIPanel3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.530595, 0.530595, 0.530595 ), Vector3( 0.530595, 0.530595, 0.530595 ), Vector3( 1.66821, 1.70475, 1.19265 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "zip"
+tracks/0/type = "value"
+tracks/0/path = NodePath("GUIPanel3D:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 2.80979, -0.160939, -5.54429 ), Vector3( 3.20042, -0.579195, -2.775 ), Vector3( 5.52937, -0.579195, -2.775 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GUIPanel3D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.17055, 1.75474e-13, -90 ), Vector3( 3.13794, -9.70092, -54.2223 ), Vector3( 15.4331, -16.6967, -4.56375 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GUIPanel3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.66821, 1.70475, 1.19265 ), Vector3( 0.530595, 0.530595, 0.530595 ), Vector3( 0.530595, 0.530595, 0.530595 ) ]
+}
+
 [sub_resource type="PlaneMesh" id=3]
 
 [sub_resource type="BoxShape" id=4]
@@ -44,6 +132,23 @@ radius = 0.583372
 albedo_color = Color( 0.722656, 0.791992, 1, 1 )
 roughness = 0.0
 
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "mad",
+"speed": 3.0
+} ]
+
+[sub_resource type="CapsuleShape" id=9]
+radius = 0.769674
+height = 0.002
+
 [node name="GUIin3D" type="Spatial"]
 
 [node name="Cubio" type="KinematicBody" parent="."]
@@ -55,7 +160,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
@@ -67,8 +172,15 @@ transform = Transform( 1, 0, 0, 0, 0.960886, 0.276946, 0, -0.276946, 0.960885, 0
 fov = 74.0
 near = 0.1
 
-[node name="GUIPanel3D" parent="Cubio/Camera" instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.56105, 5.96046e-07, -3.4006 )
+[node name="DrawingPad" type="Spatial" parent="Cubio/Camera"]
+script = ExtResource( 20 )
+
+[node name="GUIPanel3D" parent="Cubio/Camera/DrawingPad" instance=ExtResource( 1 )]
+transform = Transform( 0.509841, 7.90649e-09, -0.146946, -0.0406962, 0.509841, -0.141199, 0.141199, 0.146946, 0.489899, 5.52937, -0.579195, -2.775 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Cubio/Camera/DrawingPad"]
+anims/extract = SubResource( 12 )
+anims/zip = SubResource( 11 )
 
 [node name="WinText" type="CenterContainer" parent="Cubio"]
 visible = false
@@ -145,3 +257,21 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88761, 2.01326, 0.374871 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 7 )
+
+[node name="Mad" type="Spatial" parent="Background" groups=[
+"recognized",
+]]
+transform = Transform( 1.42968, 0, 0, 0, 1.42968, 0, 0, 0, 1.42968, 6.09906, -0.335816, 4.2437 )
+script = ExtResource( 19 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Background/Mad"]
+billboard = 2
+frames = SubResource( 8 )
+frame = 1
+playing = true
+
+[node name="StaticBody" type="StaticBody" parent="Background/Mad/AnimatedSprite3D"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Background/Mad/AnimatedSprite3D/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1.327, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 9 )

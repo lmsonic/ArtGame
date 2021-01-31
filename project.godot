@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://pdollar/Point.gd"
 }, {
-"base": "MeshInstance",
+"base": "Node",
 "class": "Recognized",
 "language": "GDScript",
 "path": "res://Recognized.gd"

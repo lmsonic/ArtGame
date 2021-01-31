@@ -18,7 +18,7 @@ func _ready():
 	
 func recognize():
 	var points = get_parent().points
-	if points and points.size()>5:
+	if points and points.size()>16:
 		var result = GestureRecognizer.Classify(Gesture.new(points,[],""),trainingSet)
 		textLabel.text = result.GestureClass+' '+ str(result.Score)
 		emit_signal("clear")
