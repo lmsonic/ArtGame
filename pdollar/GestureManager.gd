@@ -3,20 +3,26 @@ extends Control
 var trainingSet:Array=[]
 signal show_gesture
 signal clear
+signal recognized(shape)
 const gesture_folder = "user://gestures"
 onready var textEdit := $MarginContainer/HBoxContainer/VBoxContainer/TextEdit
 onready var textLabel:=$MarginContainer/HBoxContainer/VBoxContainer/Label
+export var threshold:= 0.75
+
 func update_gestures():
 	trainingSet=GestureIO.load_gestures()
 
 func _ready():
 	trainingSet=GestureIO.load_gestures()
+	get_tree().call_group("recognized","connect_signal",self)
 	
 func recognize():
 	var points = get_parent().points
-	if points:
+	if points and points.size()>5:
 		var result = GestureRecognizer.Classify(Gesture.new(points,[],""),trainingSet)
 		textLabel.text = result.GestureClass+' '+ str(result.Score)
+		if result.Score>threshold:
+			emit_signal("recognized",result.GestureClass)
 
 func _on_save():
 	var name:String=textEdit.text

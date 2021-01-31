@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://gui_panel_3d.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Recognized.gd" type="Script" id=2]
 [ext_resource path="res://kinematic character/cubio.gd" type="Script" id=3]
 [ext_resource path="res://assets/protag frames/sprite basedietro fermo2.png" type="Texture" id=4]
 [ext_resource path="res://assets/protag frames/sprite basedietro fermo6.png" type="Texture" id=5]
@@ -23,7 +24,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.583372
 
 [sub_resource type="PlaneMesh" id=3]
 
@@ -32,6 +34,8 @@ animations = [ {
 [sub_resource type="CubeMesh" id=5]
 
 [sub_resource type="SpatialMaterial" id=6]
+
+[sub_resource type="SpatialMaterial" id=7]
 albedo_color = Color( 0.722656, 0.791992, 1, 1 )
 roughness = 0.0
 
@@ -46,7 +50,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
-frame = 6
+frame = 3
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
@@ -59,7 +63,7 @@ fov = 74.0
 near = 0.1
 
 [node name="GUIPanel3D" parent="Cubio/Camera" instance=ExtResource( 1 )]
-transform = Transform( -0.00198589, 1.16663, 0.0109804, -1.16557, -0.0015054, -0.0508581, -0.0508417, -0.0110566, 1.16552, 1.84215, 0.753674, -3.47814 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 2.56105, 5.96046e-07, -3.4006 )
 
 [node name="WinText" type="CenterContainer" parent="Cubio"]
 visible = false
@@ -96,7 +100,7 @@ material/0 = null
 transform = Transform( 2.10362, 0, 0, 0, 1, 0, 0, 0, 1, 0.901278, 1.86921, 1.32959 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Background/Wall/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 2.89978, -8.30423e-08, 0, -8.30423e-08, 1, 0, 0, 0.5 )
+transform = Transform( 1, 0, 0, 0, 2.89978, -8.30423e-08, 0, -8.30423e-08, 1, 0, -7.45058e-09, 0.221655 )
 shape = SubResource( 4 )
 
 [node name="Wall4" type="MeshInstance" parent="Background"]
@@ -124,12 +128,15 @@ transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 10.0556, 5.08055, -2.68765, 1.465
 mesh = SubResource( 3 )
 material/0 = null
 
-[node name="Cube" type="MeshInstance" parent="Background"]
+[node name="Cube" type="MeshInstance" parent="Background" groups=[
+"recognized",
+]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25901, -0.598608, 0.374871 )
 mesh = SubResource( 5 )
 material/0 = SubResource( 6 )
+script = ExtResource( 2 )
 
 [node name="Cube2" type="MeshInstance" parent="Background"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88761, 2.01326, 0.374871 )
 mesh = SubResource( 5 )
-material/0 = SubResource( 6 )
+material/0 = SubResource( 7 )

@@ -9,6 +9,7 @@ var jump_speed = 6  # jump strength
 var spin = 3  # rotation speed
 
 
+
 var velocity = Vector3()
 var jump = false
 

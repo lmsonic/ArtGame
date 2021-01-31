@@ -7,10 +7,11 @@ export(float) var paintWidth=1.0
 var lineStarted:=false
 var strokeId:=-1
 
-onready var labelText := $GUI/MarginContainer/HBoxContainer/VBoxContainer/Label
+onready var labelText := $GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Label
 
 func _ready():
 	Input.set_use_accumulated_input(false)
+
 
 func reset():
 	points.resize(0)
@@ -30,6 +31,7 @@ func _input(event):
 		update()
 	if event.is_action_released("draw"):
 		points.push_back(Point.new(event.position.x,event.position.y,strokeId))
+		$GUIRecognizer/Timer.start(2.0)
 		lineStarted=false
 		update()
 		
@@ -62,6 +64,5 @@ func _on_show_gesture(gesture:Gesture):
 	points=gesture.OriginalPoints
 	lines=gesture.Lines
 	update()
-
 
 

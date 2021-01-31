@@ -14,8 +14,7 @@ __meta__ = {
 }
 paintWidth = 5.0
 
-[node name="GUI" type="Control" parent="."]
-visible = false
+[node name="GUIRecognizer" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
@@ -23,53 +22,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI"]
+[node name="MarginContainer" type="MarginContainer" parent="GUIRecognizer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUI/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUIRecognizer/MarginContainer"]
 margin_right = 1022.0
 margin_bottom = 597.0
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GUIRecognizer/MarginContainer/HBoxContainer"]
 margin_right = 252.0
 margin_bottom = 597.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="GUIRecognizer/MarginContainer/HBoxContainer"]
 margin_left = 256.0
 margin_right = 509.0
 margin_bottom = 597.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer3" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="GUIRecognizer/MarginContainer/HBoxContainer"]
 margin_left = 513.0
 margin_right = 765.0
 margin_bottom = 597.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUI/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GUIRecognizer/MarginContainer/HBoxContainer"]
 margin_left = 769.0
 margin_right = 1022.0
 margin_bottom = 597.0
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_right = 253.0
 margin_bottom = 431.0
 size_flags_vertical = 3
 
-[node name="TextEdit" type="LineEdit" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="TextEdit" type="LineEdit" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 435.0
 margin_right = 253.0
 margin_bottom = 459.0
 caret_blink_speed = 0.1
 
-[node name="Save" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Save" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 463.0
 margin_right = 253.0
 margin_bottom = 483.0
@@ -79,7 +78,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Load" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Load" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 487.0
 margin_right = 253.0
 margin_bottom = 507.0
@@ -88,7 +87,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Clear" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Clear" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 511.0
 margin_right = 253.0
 margin_bottom = 531.0
@@ -97,7 +96,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Recognize" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Recognize" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 535.0
 margin_right = 253.0
 margin_bottom = 555.0
@@ -106,7 +105,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeleteGestures" type="Button" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="DeleteGestures" type="Button" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 559.0
 margin_right = 253.0
 margin_bottom = 579.0
@@ -115,16 +114,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GUI/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 583.0
 margin_right = 253.0
 margin_bottom = 597.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gesture"
-[connection signal="clear" from="GUI" to="." method="reset"]
-[connection signal="show_gesture" from="GUI" to="." method="_on_show_gesture"]
-[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Save" to="GUI" method="_on_save"]
-[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUI" method="_on_load"]
-[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Clear" to="." method="reset"]
-[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/Recognize" to="GUI" method="recognize"]
-[connection signal="button_down" from="GUI/MarginContainer/HBoxContainer/VBoxContainer/DeleteGestures" to="GUI" method="_on_DeleteGestures_button_down"]
+
+[node name="Timer" type="Timer" parent="GUIRecognizer"]
+one_shot = true
+[connection signal="clear" from="GUIRecognizer" to="." method="reset"]
+[connection signal="recognized" from="GUIRecognizer" to="." method="_on_GUIRecognizer_recognized"]
+[connection signal="show_gesture" from="GUIRecognizer" to="." method="_on_show_gesture"]
+[connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Save" to="GUIRecognizer" method="_on_save"]
+[connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Load" to="GUIRecognizer" method="_on_load"]
+[connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Clear" to="." method="reset"]
+[connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Recognize" to="GUIRecognizer" method="recognize"]
+[connection signal="button_down" from="GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/DeleteGestures" to="GUIRecognizer" method="_on_DeleteGestures_button_down"]
+[connection signal="timeout" from="GUIRecognizer/Timer" to="GUIRecognizer" method="recognize"]
