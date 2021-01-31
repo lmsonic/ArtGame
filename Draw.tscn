@@ -130,7 +130,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gesture"
 
 [node name="Timer" type="Timer" parent="GUIRecognizer"]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 [connection signal="clear" from="GUIRecognizer" to="." method="reset"]
 [connection signal="show_gesture" from="GUIRecognizer" to="." method="_on_show_gesture"]

@@ -1,5 +1,5 @@
 extends Spatial
-
+onready var player:= $"../.."
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,7 +9,10 @@ onready var draw=$GUIPanel3D/Viewport/Draw
 func set_extracted(value:bool):
 	extracted=value
 	draw.extracted=value
+	player.extracted=value
+	player.get_node("AnimatedSprite3D").play("idle")
 	print(extracted)
+	
 
 
 
