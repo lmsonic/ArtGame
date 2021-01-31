@@ -3,8 +3,8 @@ extends Spatial
 class_name Recognized
 
 export(String)var shape ="triangle"
-export(float)var distanceToTrigger =5.0
-onready var player = get_tree().root.get_child(0).get_node("Player")
+export(float)var distanceToTrigger =15
+onready var player = get_tree().get_nodes_in_group("player")[0]
 #this gets called by the drawing recognizer on all elements of the group
 # "recognized"
 func connect_signal(node:Node):

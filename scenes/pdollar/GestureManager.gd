@@ -4,7 +4,6 @@ var trainingSet:Array=[]
 signal show_gesture
 signal clear
 signal recognized(shape)
-const gesture_folder = "user://gestures"
 onready var textEdit := $MarginContainer/HBoxContainer/VBoxContainer/TextEdit
 onready var textLabel:=$MarginContainer/HBoxContainer/VBoxContainer/Label
 export var threshold:= 0.6

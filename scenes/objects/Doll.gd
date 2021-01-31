@@ -1,14 +1,19 @@
 extends "res://scenes/objects/Recognized.gd"
 
 var opened:=false
-
+var red:=false
 func triggered(result):
-	if (self.global_position-player.global_position).length<distanceToTrigger:
+	if (self.transform.origin-player.transform.origin).length()<distanceToTrigger:
 		if result=="hand" and opened:
 			$Doll.play("red")
-		elif result=="key":
-			Globals.has_key=true
+			red=true
+		if result=="key":
 			$Doll.show()
 			$AnimationPlayer.play("open")
 			get_parent().play("open")
 			opened=true
+
+func _on_Area_body_entered(body):
+	if body is Player and red:
+		Globals.has_doll=true
+		queue_free()

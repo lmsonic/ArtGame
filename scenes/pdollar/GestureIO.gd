@@ -2,7 +2,7 @@ extends Node
 
 class_name GestureIO
 
-const gesture_path = "user://gestures.json"
+const gesture_path = "res://assets/gestures.json"
 const default_data :Dictionary = {
 	'Name' : 'Gesture',
 	'Lines': {
@@ -108,4 +108,4 @@ static func load_gestures() -> Array :
 	
 static func delete_gestures():
 	var dir = Directory.new()
-	dir.remove("user://gestures.json") 
+	dir.remove(gesture_path) 
