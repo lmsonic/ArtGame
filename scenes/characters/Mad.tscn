@@ -1,0 +1,45 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/characters/Mad.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters/mad/npc hand mad4.png" type="Texture" id=2]
+[ext_resource path="res://assets/characters/mad/npc hand mad6.png" type="Texture" id=3]
+[ext_resource path="res://assets/characters/mad/npc hand mad5.png" type="Texture" id=4]
+[ext_resource path="res://assets/characters/mad/npc hand mad1.png" type="Texture" id=5]
+[ext_resource path="res://assets/characters/mad/npc hand2.png" type="Texture" id=6]
+[ext_resource path="res://assets/characters/mad/npc hand1.png" type="Texture" id=7]
+[ext_resource path="res://assets/characters/mad/npc hand mad3.png" type="Texture" id=8]
+[ext_resource path="res://assets/characters/mad/npc hand mad2.png" type="Texture" id=9]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "mad",
+"speed": 3.0
+} ]
+
+[sub_resource type="CapsuleShape" id=2]
+radius = 0.769674
+height = 0.002
+
+[node name="Mad" type="Spatial" groups=[
+"recognized",
+]]
+transform = Transform( 1.42968, 0, 0, 0, 1.42968, 0, 0, 0, 1.42968, 6.09906, -0.335816, 4.2437 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+billboard = 2
+frames = SubResource( 1 )
+playing = true
+
+[node name="StaticBody" type="StaticBody" parent="AnimatedSprite3D"]
+
+[node name="CollisionShape" type="CollisionShape" parent="AnimatedSprite3D/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1.327, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 2 )

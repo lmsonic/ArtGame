@@ -11,15 +11,15 @@ onready var labelText := $GUIRecognizer/MarginContainer/HBoxContainer/VBoxContai
 
 var extracted:=true  setget set_extracted
 
+#when the drawing is extracted/zipped, the viewport stops
 func set_extracted(value:bool):
 	extracted=value
-	set_process(value)
-	set_physics_process(value)
 
+#extra precision
 func _ready():
 	Input.set_use_accumulated_input(false)
 
-
+	
 func reset():
 	points.resize(0)
 	lines.clear()
@@ -30,20 +30,24 @@ func reset():
 func _input(event):
 	if extracted:
 		if event.is_action_pressed("draw"):
+			#starts a stroke
 			strokeId+=1
 			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 			lineStarted=true
 			update()
 		if event.is_action("draw"):
+			#continues a stroke
 			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 			update()
 		if event.is_action_released("draw"):
+			#finishes a stroke
 			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 			$GUIRecognizer/Timer.start()
 			lineStarted=false
 			update()
 			
 		if lineStarted and event is InputEventMouseMotion:
+			#draws line
 			var line: = Line.new(event.position,
 								event.position-event.relative,
 								event.pressure*paintWidth,
@@ -69,9 +73,8 @@ func draw_points(width:float,color:Color):
 	
 
 func _on_show_gesture(gesture:Gesture):
+	#displays gesture
 	reset()
 	points=gesture.OriginalPoints
 	lines=gesture.Lines
 	update()
-
-

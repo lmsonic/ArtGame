@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/dialogue/Dialogue.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/dialogue/bubbles/nuv coda1.png" type="Texture" id=2]
+[ext_resource path="res://assets/dialogue/bubbles/nuv coda2.png" type="Texture" id=3]
+
+[node name="Bubbles" type="Spatial"]
+transform = Transform( -1, 6.15808e-09, 0, 0, 0.960886, -0.276946, 0, 0.276946, 0.960886, -0.0406375, -1.39538, -9.61937 )
+
+[node name="small" type="Sprite3D" parent="."]
+transform = Transform( 1.79192, -1.77636e-15, -5.96046e-08, 1.77636e-15, 1.79192, 0, 5.96046e-08, 1.77636e-15, 1.79192, 1.14323, 1.57281, 3.51395 )
+billboard = 2
+texture = ExtResource( 3 )
+
+[node name="medium" type="Sprite3D" parent="."]
+transform = Transform( 1.9594, 0, 0, 0, 1.9594, 0, 0, 0, 1.9594, 1.9578, 1.89539, 3.51395 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="dialogue" parent="." instance=ExtResource( 1 )]

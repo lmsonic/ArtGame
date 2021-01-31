@@ -1,4 +1,4 @@
-extends "res://Recognized.gd"
+extends "res://scenes/objects/Recognized.gd"
 
 
 func triggered(result):

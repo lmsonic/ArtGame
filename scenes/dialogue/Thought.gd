@@ -10,4 +10,3 @@ func _ready():
 		if (children.size()>i):
 			child.texture=thoughtsTexture[i]
 			i+=1
-

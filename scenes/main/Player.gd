@@ -14,12 +14,10 @@ var velocity = Vector3()
 var extracted:=false
 var jump = false
 
-
-
 func get_input(delta):
 	if not extracted:
 		var vy = velocity.y
-		velocity = Vector3()
+		velocity = Vector3() #moves according to local direction
 		if Input.is_action_pressed("ui_up"):
 			velocity += -transform.basis.z * speed
 		if Input.is_action_pressed("ui_down"):
@@ -32,6 +30,7 @@ func get_input(delta):
 			velocity += -transform.basis.x * speed
 		
 		if abs(velocity.x)>0 or abs(velocity.z)>0:
+			#animation
 			if velocity.z>0:
 				sprite.play("walk")
 			else:

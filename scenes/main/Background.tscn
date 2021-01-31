@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/characters/Mad.gd" type="Script" id=1]
+[ext_resource path="res://scenes/objects/Chest.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/characters/Mad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/objects/Recognized.gd" type="Script" id=4]
+[ext_resource path="res://assets/objects/baul2.png" type="Texture" id=5]
+[ext_resource path="res://assets/objects/baule.png" type="Texture" id=6]
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[sub_resource type="CubeMesh" id=3]
+
+[sub_resource type="SpatialMaterial" id=4]
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.722656, 0.791992, 1, 1 )
+roughness = 0.0
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "closed",
+"speed": 5.0
+} ]
+
+[node name="Background" type="Spatial"]
+
+[node name="Wall" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, -2.60819, 0.589247, -7.21644 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Wall"]
+transform = Transform( 2.10362, 0, 0, 0, 1, 0, 0, 0, 1, 0.901278, 1.86921, 1.32959 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Wall/StaticBody"]
+transform = Transform( 1, 0, 0, 0, 2.89978, -8.30423e-08, 0, -8.30423e-08, 1, 0, -7.45058e-09, 0.221655 )
+shape = SubResource( 2 )
+
+[node name="Wall4" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 4.64137, 0.589247, -7.49607 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Wall2" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 5.08055, 0.589247, -2.08943 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Wall3" type="MeshInstance" parent="."]
+transform = Transform( -1.74846e-07, -4, 0, -1.74846e-07, 7.64274e-15, -4, 11.7768, -5.14782e-07, -5.14782e-07, 9.04446, 0.589247, 1.62058 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Floor" type="MeshInstance" parent="."]
+transform = Transform( 4.20131, 0, 0, 0, 4.20131, 0, 0, 0, 9.11626, -2.60819, -2.68765, 1.88943 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Floor2" type="MeshInstance" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 10.0556, 5.08055, -2.68765, 1.46502 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Cube" type="MeshInstance" parent="." groups=[
+"recognized",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25901, -0.598608, 0.374871 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+script = ExtResource( 4 )
+
+[node name="Cube2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88761, 2.01326, 0.374871 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="Chest" type="AnimatedSprite3D" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2.96403, 0, 0, 0, 2.96403, 0, 0, 0, 2.96403, -0.0204782, -1.69518, -4.95331 )
+billboard = 2
+frames = SubResource( 6 )
+animation = "open"
+
+[node name="Mad" type="Spatial" parent="." groups=[
+"recognized",
+] instance=ExtResource( 3 )]
+transform = Transform( 1.42968, 0, 0, 0, 1.42968, 0, 0, 0, 1.42968, 6.09906, -0.335816, 4.2437 )
+script = ExtResource( 1 )

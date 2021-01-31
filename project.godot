@@ -12,43 +12,37 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Gesture",
 "language": "GDScript",
-"path": "res://pdollar/Gesture.gd"
+"path": "res://scenes/pdollar/Gesture.gd"
 }, {
 "base": "Node",
 "class": "GestureIO",
 "language": "GDScript",
-"path": "res://pdollar/GestureIO.gd"
+"path": "res://scenes/pdollar/GestureIO.gd"
 }, {
 "base": "Node",
 "class": "GestureRecognizer",
 "language": "GDScript",
-"path": "res://pdollar/GestureRecognizer.gd"
-}, {
-"base": "Reference",
-"class": "Jsonify",
-"language": "GDScript",
-"path": "res://jsonify.gd"
+"path": "res://scenes/pdollar/GestureRecognizer.gd"
 }, {
 "base": "Node",
 "class": "Line",
 "language": "GDScript",
-"path": "res://pdollar/Line.gd"
+"path": "res://scenes/pdollar/Line.gd"
 }, {
 "base": "Node",
 "class": "Point",
 "language": "GDScript",
-"path": "res://pdollar/Point.gd"
+"path": "res://scenes/pdollar/Point.gd"
 }, {
 "base": "Node",
 "class": "Recognized",
 "language": "GDScript",
-"path": "res://Recognized.gd"
+"path": "res://scenes/objects/Recognized.gd"
 } ]
 _global_script_class_icons={
 "Gesture": "",
 "GestureIO": "",
 "GestureRecognizer": "",
-"Jsonify": "",
 "Line": "",
 "Point": "",
 "Recognized": ""
@@ -57,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ArtGame"
-run/main_scene="res://gui_in_3d.tscn"
+run/main_scene="res://scenes/main/gui_in_3d.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -113,7 +107,3 @@ exit={
 [physics]
 
 common/physics_fps=45
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
