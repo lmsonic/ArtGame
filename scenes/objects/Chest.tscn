@@ -75,7 +75,7 @@ shape = SubResource( 3 )
 anims/open = SubResource( 4 )
 
 [node name="Area2" type="Area" parent="Spatial"]
-transform = Transform( 0.416581, 0, 0, 0, 0.416581, 0, 0, 0, 0.377211, 0.236673, 0, 0 )
+transform = Transform( 0.416581, 0, 0, 0, 0.416581, 0, 0, 0, 0.377211, 0.226743, 0, 0.0024755 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Area2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.515168, 0, 0 )
