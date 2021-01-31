@@ -9,7 +9,7 @@ var strokeId:=-1
 
 onready var labelText := $GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Label
 
-var extracted:=false setget set_extracted
+var extracted:=true  setget set_extracted
 
 func set_extracted(value:bool):
 	extracted=value
@@ -39,7 +39,7 @@ func _input(event):
 			update()
 		if event.is_action_released("draw"):
 			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
-			$GUIRecognizer/Timer.start(2.0)
+			$GUIRecognizer/Timer.start()
 			lineStarted=false
 			update()
 			

@@ -10,7 +10,7 @@ var Points:Array           #// gesture points (normalized)
 var OriginalPoints:Array           #// gesture points (normalized)
 var Lines:Array           #// gesture points (normalized)
 var Name: = "";                 #// gesture class
-const SAMPLING_RESOLUTION := 64;
+const SAMPLING_RESOLUTION := 32;
 #/// <summary>
 #/// Constructs a gesture from an array of points
 #/// </summary>

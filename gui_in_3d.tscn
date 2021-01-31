@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://gui_panel_3d.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Recognized.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/npc framea/npc hand mad2.png" type="Texture" id=18]
 [ext_resource path="res://Mad.gd" type="Script" id=19]
 [ext_resource path="res://DrawingPad.gd" type="Script" id=20]
+[ext_resource path="res://Chest.tscn" type="PackedScene" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,19 +29,20 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "walk_reverse",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_reverse",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.583372
+height = 0.502507
 
 [sub_resource type="Animation" id=3]
 resource_name = "extract"
@@ -152,7 +154,7 @@ height = 0.002
 [node name="GUIin3D" type="Spatial"]
 
 [node name="Cubio" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9748 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.37032, 2.9748 )
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Cubio"]
@@ -160,7 +162,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
-frame = 6
+frame = 2
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
@@ -258,6 +260,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.88761, 2.01326, 0.374871 )
 mesh = SubResource( 7 )
 material/0 = SubResource( 9 )
 
+[node name="Chest" parent="Background" instance=ExtResource( 21 )]
+transform = Transform( 2.96403, 0, 0, 0, 2.96403, 0, 0, 0, 2.96403, -0.0204782, -1.69518, -4.95331 )
+
 [node name="Mad" type="Spatial" parent="Background" groups=[
 "recognized",
 ]]
@@ -267,7 +272,6 @@ script = ExtResource( 19 )
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Background/Mad"]
 billboard = 2
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="StaticBody" type="StaticBody" parent="Background/Mad/AnimatedSprite3D"]
