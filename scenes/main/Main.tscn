@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/main/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sfondo.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/characters/Mad.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/characters/npc/npccrouch.png" type="Texture" id=5]
 [ext_resource path="res://scenes/main/Window.gd" type="Script" id=6]
+[ext_resource path="res://assets/Patricia Taxxon - Metalworks.ogg" type="AudioStream" id=7]
 [ext_resource path="res://assets/objects/flower.png" type="Texture" id=9]
 [ext_resource path="res://assets/objects/flower2.png" type="Texture" id=10]
 [ext_resource path="res://assets/objects/window 2.png" type="Texture" id=11]
@@ -64,21 +65,21 @@ animations = [ {
 "name": "3",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ) ],
-"loop": true,
-"name": "5",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "5",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="CapsuleShape" id=8]
+[sub_resource type="CapsuleShape" id=7]
 radius = 0.769674
 height = 0.002
 
@@ -174,26 +175,26 @@ material = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3909, 3.65112, 3.84873 )
 billboard = 2
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Flower2" type="AnimatedSprite3D" parent="Objects/Flowers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3909, 3.65112, -25.7142 )
 billboard = 2
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Flower3" type="AnimatedSprite3D" parent="Objects/Flowers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5476, 3.65112, -25.7142 )
 billboard = 2
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Flower4" type="AnimatedSprite3D" parent="Objects/Flowers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5476, 3.65112, 4.86023 )
 billboard = 2
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Notebook" parent="Objects" instance=ExtResource( 13 )]
@@ -234,4 +235,23 @@ texture = ExtResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Characters/AnimatedSprite3D/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1.327, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+autoplay = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 829.0
+margin_top = 3.0
+margin_right = 1040.0
+margin_bottom = 51.0
+bbcode_enabled = true
+bbcode_text = "
+[wave]Metalworks - Patricia Taxxon[/wave]"
+text = "
+Metalworks - Patricia Taxxon"
+__meta__ = {
+"_edit_use_anchors_": false
+}
