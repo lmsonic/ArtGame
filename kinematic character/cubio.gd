@@ -8,7 +8,7 @@ var jump_speed = 6  # jump strength
 
 var spin = 3  # rotation speed
 
-
+onready var sprite:AnimatedSprite3D = $AnimatedSprite3D
 
 var velocity = Vector3()
 var jump = false
@@ -26,6 +26,15 @@ func get_input(delta):
 	if Input.is_action_pressed("ui_left"):
 		rotate_y(spin*delta)
 		velocity += -transform.basis.x * speed
+	
+	if abs(velocity.x)>0 or abs(velocity.z)>0:
+		if velocity.z>0:
+			sprite.play("walk")
+		else:
+			sprite.play("walk_reverse")
+	else:
+		sprite.play("idle")
+		
 	velocity.y = vy
 
 

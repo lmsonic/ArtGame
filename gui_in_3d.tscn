@@ -13,7 +13,7 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
@@ -21,6 +21,11 @@ animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "walk_reverse",
 "speed": 5.0
 } ]
 
@@ -50,7 +55,7 @@ transform = Transform( 1, 0, 4.65661e-10, 0, 1, 0, -4.65661e-10, 0, 1, 0, 0, 0 )
 billboard = 2
 frames = SubResource( 1 )
 animation = "walk"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Cubio"]
