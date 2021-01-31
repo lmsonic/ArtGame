@@ -32,7 +32,7 @@ animations = [ {
 
 [sub_resource type="CapsuleShape" id=2]
 radius = 0.583372
-height = 0.502507
+height = 1.22359
 
 [sub_resource type="Animation" id=3]
 resource_name = "extract"
@@ -172,7 +172,7 @@ animation = "idle"
 playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.95, 1.86265e-09, 0, 0, -7.5183e-08, -1.71999, -1.86265e-09, 0.95, -4.15258e-08, 0, 0, 0 )
+transform = Transform( 0.95, 1.86265e-09, 0, 0, -7.5183e-08, -1.71999, -1.86265e-09, 0.95, -4.15258e-08, 0, -0.524033, 0 )
 shape = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]

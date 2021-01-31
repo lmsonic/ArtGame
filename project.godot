@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ArtGame"
-run/main_scene="res://scenes/main/gui_in_3d.tscn"
+run/main_scene="res://scenes/main/Main.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
