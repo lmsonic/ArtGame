@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/draw/DrawingPad.gd" type="Script" id=1]
 [ext_resource path="res://scenes/draw/gui_panel_3d.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/dialogue/Tutorial.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/main/Player.gd" type="Script" id=4]
 [ext_resource path="res://assets/characters/protag/sprite basedietro fermo5.png" type="Texture" id=5]
 [ext_resource path="res://assets/characters/protag/sprite basedietro fermo7.png" type="Texture" id=6]
@@ -145,5 +144,3 @@ anims/extract = SubResource( 3 )
 anims/zip = SubResource( 4 )
 
 [node name="Bubbles" parent="Camera" instance=ExtResource( 13 )]
-
-[node name="Tutorial" parent="." instance=ExtResource( 3 )]

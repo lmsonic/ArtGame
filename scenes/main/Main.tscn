@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/main/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/sfondo.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/characters/npc/npccrouch.png" type="Texture" id=5]
 [ext_resource path="res://scenes/main/Window.gd" type="Script" id=6]
 [ext_resource path="res://assets/Patricia Taxxon - Metalworks.ogg" type="AudioStream" id=7]
+[ext_resource path="res://scenes/dialogue/Tutorial.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/objects/flower.png" type="Texture" id=9]
 [ext_resource path="res://assets/objects/flower2.png" type="Texture" id=10]
 [ext_resource path="res://assets/objects/window 2.png" type="Texture" id=11]
@@ -55,9 +56,9 @@ animations = [ {
 "name": "2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 17 ) ],
+"frames": [ ExtResource( 16 ) ],
 "loop": true,
-"name": "5",
+"name": "3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
@@ -65,14 +66,14 @@ animations = [ {
 "name": "4",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 17 ) ],
+"loop": true,
+"name": "5",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 18 ) ],
 "loop": true,
 "name": "1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "3",
 "speed": 5.0
 } ]
 
@@ -175,26 +176,26 @@ material = SubResource( 2 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3909, 3.65112, 3.84873 )
 billboard = 2
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Flower2" type="AnimatedSprite3D" parent="Objects/Flowers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3909, 3.65112, -25.7142 )
 billboard = 2
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Flower3" type="AnimatedSprite3D" parent="Objects/Flowers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5476, 3.65112, -25.7142 )
 billboard = 2
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Flower4" type="AnimatedSprite3D" parent="Objects/Flowers"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5476, 3.65112, 4.86023 )
 billboard = 2
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="Notebook" parent="Objects" instance=ExtResource( 13 )]
@@ -256,3 +257,5 @@ Metalworks - Patricia Taxxon"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Tutorial" parent="." instance=ExtResource( 8 )]
