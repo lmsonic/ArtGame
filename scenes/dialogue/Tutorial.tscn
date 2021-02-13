@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/dialogue/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Daily Hours.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="Tutorial" type="RichTextLabel" groups=[
+"tutorial",
+]]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 556.0
+margin_top = -117.0
+margin_right = -135.0
+margin_bottom = -75.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Press space to open notebook"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

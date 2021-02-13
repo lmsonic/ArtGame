@@ -1,10 +1,12 @@
-extends HBoxContainer
+extends MarginContainer
 
 export(Array,Texture) onready var thoughtsTexture 
 
+onready var grid:GridContainer=$VBoxContainer/GridBoxContainer
+onready var hbox:HBoxContainer=$VBoxContainer/HBoxContainer
 
 #list of thoughts
-var thoughts:={
+onready var thoughts:={
 	"exclamation": preload("res://assets/dialogue/thoughts/!.png"),
 	"bone": preload("res://assets/dialogue/thoughts/bone.png"),
 	"dollsign": preload("res://assets/dialogue/thoughts/dollisign.png"),
@@ -21,18 +23,39 @@ var thoughts:={
 	"whatsmissing": preload("res://assets/dialogue/thoughts/whastmissing.png"),
 }
 
-func update_textures(texture1:String,texture2=null,texture3=null):
-	thoughtsTexture[0]=thoughts[texture1]
-	if texture2==null : $TextureRect2.hide()  
-	else: thoughtsTexture[1]=thoughts[texture2]
-	if texture3==null : $TextureRect3.hide()  
-	else: thoughtsTexture[2]=thoughts[texture3]
+func update_textures(textures:Array):
+	thoughtsTexture = []
+	for i in range(textures.size()):
+		thoughtsTexture.push_back(thoughts[textures[i]])
+	
+	delete_children(grid)
+	delete_children(hbox)
+	add_children()
+	
+func _ready():
+	add_children()
+
+static func delete_children(node:Node):
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	var children = get_children()
-	var i:=0
-	for child in children:
-		if (children.size()>i):
-			child.texture=thoughtsTexture[i]
-			i+=1
+func add_children():
+	hbox.hide()
+	grid.hide()
+	for i in thoughtsTexture.size():
+		var rect:TextureRect=TextureRect.new()
+		rect.texture = thoughtsTexture[i]
+		rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		rect.size_flags_horizontal = TextureRect.SIZE_EXPAND_FILL
+		rect.size_flags_vertical = TextureRect.SIZE_EXPAND_FILL
+		if thoughtsTexture.size()%2==1 and i==thoughtsTexture.size()-1:
+			hbox.show()
+			hbox.add_child(rect)
+		else:
+			if !grid.visible: grid.show()
+			grid.add_child(rect)
+				
+		
+

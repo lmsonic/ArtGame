@@ -3,9 +3,11 @@
 [ext_resource path="res://scenes/dialogue/Dialogue.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/dialogue/bubbles/nuv coda1.png" type="Texture" id=2]
 [ext_resource path="res://assets/dialogue/bubbles/nuv coda2.png" type="Texture" id=3]
-[ext_resource path="res://scenes/dialogue/Bubbles.gd" type="Script" id=4]
+[ext_resource path="res://scenes/dialogue/ShowOnTimeout.gd" type="Script" id=4]
 
-[node name="Bubbles" type="Spatial"]
+[node name="Bubbles" type="Spatial" groups=[
+"bubbles",
+]]
 transform = Transform( -1, 6.15808e-09, 0, 0, 0.960886, -0.276946, 0, 0.276946, 0.960886, -0.0406375, -1.39538, -9.61937 )
 script = ExtResource( 4 )
 
@@ -15,6 +17,11 @@ billboard = 2
 texture = ExtResource( 3 )
 
 [node name="medium" type="Sprite3D" parent="."]
+transform = Transform( 1.9594, 0, 0, 0, 1.9594, 0, 0, 0, 1.9594, 1.9578, 1.89539, 3.51395 )
+billboard = 2
+texture = ExtResource( 2 )
+
+[node name="medium2" type="Sprite3D" parent="."]
 transform = Transform( 1.9594, 0, 0, 0, 1.9594, 0, 0, 0, 1.9594, 1.9578, 1.89539, 3.51395 )
 billboard = 2
 texture = ExtResource( 2 )

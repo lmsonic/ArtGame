@@ -50,21 +50,6 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 18 ) ],
-"loop": true,
-"name": "1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "4",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "2",
@@ -73,6 +58,21 @@ animations = [ {
 "frames": [ ExtResource( 17 ) ],
 "loop": true,
 "name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": true,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 18 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "3",
 "speed": 5.0
 } ]
 
@@ -219,6 +219,7 @@ transform = Transform( 2.51148, 0, 0, 0, 2.51148, 0, 0, 0, 2.51148, 0.581767, 5.
 
 [node name="CSGBox" type="CSGBox" parent="Objects/Chest"]
 transform = Transform( 0.591434, 0, 0, 0, 0.73832, 0, 0, 0, 0.591434, 0, -1.03474, 0 )
+use_collision = true
 material = SubResource( 6 )
 
 [node name="Characters" type="Spatial" parent="."]

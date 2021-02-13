@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/dialogue/Thought.gd" type="Script" id=1]
+[ext_resource path="res://assets/dialogue/thoughts/whastmissing.png" type="Texture" id=2]
+[ext_resource path="res://assets/dialogue/thoughts/eye.png" type="Texture" id=3]
+[ext_resource path="res://assets/dialogue/thoughts/hand.png" type="Texture" id=4]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -24,38 +27,4 @@ __meta__ = {
 margin_right = 1024.0
 margin_bottom = 600.0
 script = ExtResource( 1 )
-thoughtsTexture = [ null, null, null ]
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_right = 338.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 342.0
-margin_right = 681.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/HBoxContainer"]
-margin_left = 685.0
-margin_right = 1024.0
-margin_bottom = 600.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-expand = true
-stretch_mode = 6
-__meta__ = {
-"_edit_use_anchors_": false
-}
+thoughtsTexture = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ]

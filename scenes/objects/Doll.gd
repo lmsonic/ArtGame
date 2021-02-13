@@ -24,9 +24,9 @@ func _on_Area_body_entered(body):
 
 func _on_Area2_body_entered(body):
 	if body is Player:
-		get_tree().call_group("bubbleTextures","update_textures","question")
+		get_tree().call_group("bubbleTextures","update_textures",["question"])
 
 
 func _on_Area2_body_exited(body):
 	if body is Player:
-		get_tree().call_group("bubbleTextures","update_textures","question","eye","whatsmissing")
+		get_tree().call_group("bubbleTextures","update_textures",["question","eye","whatsmissing"])

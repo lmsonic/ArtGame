@@ -54,7 +54,7 @@ static func CloudDistance(points1:Array,  points2:Array,  startIndex:int) -> flo
 	#// the two clouds should have the same number of points by now
 	var matched := []; 
 	#// matched[i] signals whether point i from the 2nd cloud has been already matched
-	for i in range(n):
+	for _i in range(n):
 		matched.append(false)
 	#// no points are matched at the beginning
 
