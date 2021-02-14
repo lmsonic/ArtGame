@@ -9,3 +9,4 @@ func show_commands(value:bool):
 		get_tree().call_group("bubbles","show_bubbles")
 
 var has_doll:=false
+

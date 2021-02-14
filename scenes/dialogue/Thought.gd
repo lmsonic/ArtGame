@@ -1,6 +1,6 @@
 extends MarginContainer
 
-export(Array,Texture) onready var thoughtsTexture 
+export(Array,Texture) var thoughtsTexture : Array
 
 onready var grid:GridContainer=$VBoxContainer/GridBoxContainer
 onready var hbox:HBoxContainer=$VBoxContainer/HBoxContainer

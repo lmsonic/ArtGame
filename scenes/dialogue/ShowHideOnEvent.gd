@@ -6,3 +6,5 @@ func _ready():
 func show_bubbles():
 	show()
 
+func hide_bubbles():
+	hide()

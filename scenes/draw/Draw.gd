@@ -1,5 +1,7 @@
 extends ColorRect
 
+class_name Draw
+
 var points:=[]
 var lines:=[]
 export(Color) var paintColor=Color.black
@@ -7,8 +9,8 @@ export(float) var paintWidth=1.0
 var lineStarted:=false
 var strokeId:=-1
 
-onready var labelText := $GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Label
-
+onready var labelText :Label= $GUIRecognizer/MarginContainer/HBoxContainer/VBoxContainer/Label
+onready var timer :Timer= $GUIRecognizer/Timer
 var extracted:=true  setget set_extracted
 
 #when the drawing is extracted/zipped, the viewport stops
@@ -32,28 +34,25 @@ func reset():
 	#labelText.text="Gesture"
 	update()
 
-func _input(event):
+func _input(event:InputEvent):
 	if extracted:
-		if event.is_action_pressed("draw"):
+		if event.is_action_pressed("draw") :
 			#starts a stroke
 			strokeId+=1
-			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 			lineStarted=true
-			update()
 		if event.is_action("draw"):
 			#continues a stroke
 			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
 			update()
 		if event.is_action_released("draw"):
 			#finishes a stroke
-			points.push_back(Point.new(event.position.x,event.position.y,strokeId))
-			$GUIRecognizer/Timer.start()
+			timer.start()
 			lineStarted=false
-			update()
+
 			
 		if lineStarted and event is InputEventMouseMotion:
 			#draws line
-			var line: = Line.new(event.position,
+			var line:= Line.new(event.position,
 								event.position-event.relative,
 								event.pressure*paintWidth,
 								paintColor)
@@ -64,9 +63,9 @@ func _input(event):
 func _draw():
 	#draw_points(2.5,Color.black)
 	if extracted:
-		draw_lines(lines)
+		draw_lines()
 	
-func draw_lines(lines):
+func draw_lines():
 	for line in lines:
 		draw_line(line.start,line.end,line.color,line.width,true)
 	
