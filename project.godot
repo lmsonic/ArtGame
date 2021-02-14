@@ -48,6 +48,11 @@ _global_script_classes=[ {
 "class": "Recognized",
 "language": "GDScript",
 "path": "res://scenes/objects/Recognized.gd"
+}, {
+"base": "MarginContainer",
+"class": "Thought",
+"language": "GDScript",
+"path": "res://scenes/dialogue/Thought.gd"
 } ]
 _global_script_class_icons={
 "Draw": "",
@@ -57,7 +62,8 @@ _global_script_class_icons={
 "Line": "",
 "Player": "",
 "Point": "",
-"Recognized": ""
+"Recognized": "",
+"Thought": ""
 }
 
 [application]

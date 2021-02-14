@@ -1,6 +1,11 @@
 extends MarginContainer
 
-export(Array,Texture) var thoughtsTexture : Array
+class_name Thought
+
+var thoughtTextures : Array = []
+export(Array,String) var initial_textures : Array = []
+
+var thoughtStrings:Array
 
 onready var grid:GridContainer=$VBoxContainer/GridBoxContainer
 onready var hbox:HBoxContainer=$VBoxContainer/HBoxContainer
@@ -24,16 +29,21 @@ onready var thoughts:={
 }
 
 func update_textures(textures:Array):
-	thoughtsTexture = []
+	thoughtTextures = []
+	thoughtStrings = []
 	for i in range(textures.size()):
-		thoughtsTexture.push_back(thoughts[textures[i]])
+		thoughtTextures.push_back(thoughts[textures[i]])
+		thoughtStrings.push_back(textures[i])
 	
 	delete_children(grid)
 	delete_children(hbox)
 	add_children()
 	
+func get_textures() ->Array:
+	return thoughtStrings
+	
 func _ready():
-	add_children()
+	update_textures(initial_textures)
 
 static func delete_children(node:Node):
 	for n in node.get_children():
@@ -44,13 +54,13 @@ static func delete_children(node:Node):
 func add_children():
 	hbox.hide()
 	grid.hide()
-	for i in thoughtsTexture.size():
+	for i in thoughtTextures.size():
 		var rect:TextureRect=TextureRect.new()
-		rect.texture = thoughtsTexture[i]
+		rect.texture = thoughtTextures[i]
 		rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		rect.size_flags_horizontal = TextureRect.SIZE_EXPAND_FILL
 		rect.size_flags_vertical = TextureRect.SIZE_EXPAND_FILL
-		if thoughtsTexture.size()%2==1 and i==thoughtsTexture.size()-1:
+		if thoughtTextures.size()%2==1 and i==thoughtTextures.size()-1:
 			hbox.show()
 			hbox.add_child(rect)
 		else:

@@ -1,8 +1,5 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/dialogue/thoughts/eye.png" type="Texture" id=1]
-[ext_resource path="res://assets/dialogue/thoughts/whastmissing.png" type="Texture" id=2]
-[ext_resource path="res://assets/dialogue/thoughts/hand.png" type="Texture" id=3]
 [ext_resource path="res://scenes/dialogue/Thought.gd" type="Script" id=4]
 
 [node name="MarginContainer" type="MarginContainer" groups=[
@@ -16,7 +13,7 @@ __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
 }
-thoughtsTexture = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ]
+initial_textures = [ "hand", "eye", "whatsmissing" ]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1024.0
